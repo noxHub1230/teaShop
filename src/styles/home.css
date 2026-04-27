@@ -1,0 +1,320 @@
+span {
+  color: var(--lightColor);
+}
+#title {
+  background: linear-gradient(
+    #43453c00 0%,
+    #43453c 30%,
+    #43453c 70%,
+    #43453c00 100%
+  );
+  height: 600px;
+  mix-blend-mode: multiply;
+}
+#titleText {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  text-anchor: middle;
+  color: var(--lightColor);
+  font-size: 5rem;
+  font-family: "Hina Mincho", serif;
+  white-space: nowrap;
+  animation:
+    fadeInb 1s forwards,
+    DisapearByScroll_title 1s linear both;
+  animation-timeline: auto, scroll();
+  animation-range: 0vh 70vh;
+}
+#subtitle {
+  position: relative;
+  bottom: 4rem;
+  font-family: "LXGW WenKai TC", sans-serif;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+#newsText {
+  color: var(--darkColor);
+  font-family: "LXGW WenKai TC", sans-serif;
+  font-size: 1.5rem;
+}
+#contentHome {
+  position: relative;
+  top: 50rem;
+  background: linear-gradient(
+    rgba(208, 217, 190, 0.9) 50%,
+    rgba(67, 69, 60, 0.9) 100%
+  );
+  animation: DisapearByScroll_container 1s linear both;
+  animation-timeline: scroll();
+  animation-range: 10vh 30vh;
+  overflow: visible;
+}
+.scrollDistance {
+  height: 450vh;
+}
+#section1_home {
+  view-timeline: --section1_home-tl block;
+}
+.HSsection {
+  position: sticky;
+  top: 5.5rem;
+  overflow-x: hidden;
+  animation: linear fadeIn forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range: entry 10% cover 15%;
+}
+.HShome {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.HShome::before,
+.HShome::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  z-index: 3; /* 蓋在圖片上面 */
+  pointer-events: none; /* 不擋住點擊 */
+  animation: linear maskExpand forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range: cover 30% cover 35%;
+}
+.HShome::before {
+  left: 0;
+  background: linear-gradient(to right, #43453c 70%, transparent);
+}
+
+.HShome::after {
+  right: 0;
+  background: linear-gradient(to left, #43453c 70%, transparent);
+}
+.HShome h2 {
+  opacity: 0;
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: calc(50vh - 4rem);
+  text-align: center;
+  transform: translateX(-50%);
+  text-shadow:
+    0 0 2rem black,
+    0 0 1rem black;
+  font-family: "Hina Mincho", serif;
+  font-size: 3rem;
+  animation:
+    linear fadeIn forwards,
+    linear h2Up forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range:
+    cover 15% cover 18%,
+    cover 25% cover 30%;
+}
+.HShome h2::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -5.5rem;
+  left: -2rem;
+  height: 0;
+  width: calc(100% + 4rem);
+  background: linear-gradient(black 10%, var(--darkColor) 70%, transparent);
+  animation: linear h2BgExpand forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range: cover 30% cover 35%;
+}
+.HShome svg {
+  opacity: 0;
+  animation:
+    linear fadeIn forwards,
+    linear fadeIn forwards reverse;
+  animation-timeline: --section1_home-tl;
+  animation-range:
+    cover 16% cover 20%,
+    cover 25% cover 30%;
+}
+.loopWaveLine {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  left: 0;
+  top: calc(50vh - 6rem);
+  width: 200vw;
+  height: 10rem;
+  overflow: visible;
+}
+.waveGroup {
+  animation: waveRunRight 5s linear infinite;
+}
+.waveGroupReverse {
+  animation: waveRunLeft 15s linear infinite;
+}
+path {
+  width: 100vw;
+  height: 5rem;
+  fill: none;
+  stroke-width: 0.1rem;
+  stroke: var(--lightColor);
+}
+.HStextIntro {
+  opacity: 0;
+  width: fit-content;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  text-shadow:
+    0 0 1rem black,
+    0 0 1rem black;
+  top: 32rem;
+  margin: 0 auto;
+  animation: linear fadeIn forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range: cover 28% cover 30%;
+}
+.HStextIntro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -0.5rem;
+  left: -2rem;
+  height: 0;
+  width: calc(100% + 4rem);
+  background: linear-gradient(
+    to top,
+    transparent 1%,
+    var(--darkColor) 20%,
+    var(--darkColor) 70%,
+    transparent 95%
+  );
+  animation: linear h2BgExpand forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range: cover 30% cover 35%;
+}
+.HSImages {
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+  width: 300vw;
+  top: -5rem;
+  left: calc(50vw - (300vw - 16rem) / 6);
+  display: grid;
+  grid-template: 65vh / repeat(3, 1fr);
+  gap: 8rem;
+  animation:
+    linear fadeIn forwards,
+    linear HSleft forwards;
+  animation-timeline: --section1_home-tl;
+  animation-range:
+    cover 31% cover 33%,
+    cover 35% cover 80%;
+} /* home.css */
+.HSImageItem {
+  background: var(--bg);
+  background-size: cover;
+  background-position: center;
+}
+.HSsection span {
+  font-family: "LXGW WenKai TC", sans-serif;
+  font-size: 1.25rem;
+}
+#section1_home_style {
+  background: var(--darkColor);
+  color: var(--lightColor);
+}
+#BG {
+  position: fixed;
+  z-index: -1;
+  min-height: 100vh;
+  top: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnAyaGc2NWlyaWs3dnk2aDYydXBvaHFkNmUzZjJ6NTUxcWd0dGF3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TuptaxRZphuyA/giphy.gif);
+  background-attachment: fixed;
+}
+@keyframes fadeInb {
+  from {
+    top: 25rem;
+    opacity: 0;
+  }
+  to {
+    top: 20rem;
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes h2Up {
+  to {
+    top: 2rem;
+  }
+}
+@keyframes DisapearByScroll_title {
+  from {
+    opacity: 1;
+    scale: 1;
+    transform-origin: left center;
+  }
+  to {
+    opacity: 0;
+    scale: 0.8;
+    transform-origin: left center;
+  }
+}
+@keyframes DisapearByScroll_container {
+  from {
+    opacity: 0;
+    clip-path: inset(0 50% 0 50%);
+    transform-origin: center;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform-origin: center;
+  }
+}
+@keyframes waveRunRight {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes waveRunLeft {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes HSleft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc((300vw - 16rem) / 3 * -2 - 10vw));
+  }
+}
+@keyframes maskExpand {
+  to {
+    width: 15vw;
+  }
+}
+@keyframes h2BgExpand {
+  from {
+    height: 0;
+  }
+  to {
+    height: 12rem;
+  }
+}

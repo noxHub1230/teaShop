@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Hina+Mincho&family=LXGW+WenKai+TC&family=Noto+Serif+TC:wght@200..900&family=Shippori+Mincho+B1&display=swap");
+
+:root {
+  --darkColor: #43453c;
+  --lightColor: #d0d9be;
+  --navHeight: 5.5rem;
+}
+a {
+  cursor: pointer;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  z-index: 2000;
+  bottom: 0;
+  background-color: var(--darkColor);
+  color: var(--lightColor);
+  font-family: "LXGW WenKai TC", sans-serif !important;
+  text-align: center;
+  padding: 1rem;
+}
+nav {
+  background-color: rgba(208, 217, 190, 0.8);
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 0 3rem #000;
+  z-index: 2000;
+}
+ul {
+  height: auto;
+}
+.nav-link {
+  color: var(--darkColor) !important;
+  font-family: "LXGW WenKai TC", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem !important;
+}
+.nav-item::before {
+  content: "";
+  background: linear-gradient(
+    #43453c,
+    rgba(67, 69, 60, 0.8) 60%,
+    rgba(67, 69, 60, 0)
+  );
+  position: absolute;
+  z-index: 0;
+  width: 7.8rem;
+  height: 0;
+  top: 0;
+}
+.nav-item:hover::before {
+  height: 5.5rem;
+  transition: 0.5s;
+}
+.nav-link:hover {
+  color: var(--lightColor) !important;
+  text-shadow: 0 0 5px var(--lightColor);
+  position: relative;
+  z-index: 1;
+  transition: 0.5s;
+}
+#logo {
+  height: 3.5rem;
+  margin: 1rem 0 1rem 1rem;
+}
+label.graphy {
+  display: none;
+}
+#rwdNav {
+  display: none;
+}
+.graphy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 4rem;
+  height: 4rem;
+  align-self: center;
+  cursor: pointer;
+  z-index: 2001;
+}
+.line,
+.line::before,
+.line::after {
+  width: 2rem;
+  height: 0.1rem;
+  background: var(--darkColor);
+  transition-duration: 0.2s;
+}
+.line::before,
+.line::after {
+  content: "";
+  display: block;
+  position: relative;
+  transition-duration: 0.2s;
+}
+.line::after {
+  top: 0.6rem;
+}
+.line::before {
+  bottom: 0.6rem;
+}
+@media screen and (max-width: 852px) {
+  nav {
+    overflow: revert;
+    display: flex;
+    justify-content: space-between;
+  }
+  label.graphy {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-item {
+    position: relative;
+  }
+  .nav-item::before {
+    content: "";
+    background: linear-gradient(
+      90deg,
+      rgba(67, 69, 60, 0),
+      rgba(67, 69, 60, 0.8) 20%,
+      #43453c,
+      rgba(67, 69, 60, 0.8) 80%,
+      rgba(67, 69, 60, 0)
+    );
+    position: absolute;
+    z-index: 0;
+    width: 12rem;
+    height: 3rem;
+    clip-path: inset(0 50% 0 50%);
+    right: -2.1rem;
+  }
+  .nav-item:hover::before {
+    clip-path: inset(0);
+    height: 3rem;
+    transition: 0.5s;
+  }
+  .nav-link:hover {
+    color: var(--lightColor) !important;
+    text-shadow: 0 0 5px var(--lightColor);
+    position: relative;
+    z-index: 1;
+    transition: 0.5s;
+  }
+  #navLinks {
+    position: absolute;
+    z-index: 1999;
+    width: 100%;
+    top: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    left: 100vw;
+    background: var(--lightColor);
+    transition-duration: 0.5s;
+    height: 100vh;
+  }
+  #rwdNav:checked ~ label .line {
+    background: transparent;
+  }
+  #rwdNav:checked ~ label .line::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+  #rwdNav:checked ~ label .line::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  #rwdNav:checked ~ #navLinks {
+    left: 0;
+  }
+  .nav-link:active ~ #navLinks {
+    left: 100vw;
+  }
+}
