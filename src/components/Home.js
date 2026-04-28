@@ -23,9 +23,9 @@ const HSContent = [
     title: "純淨契作",
     text: "深植於雲霧繚繞的原始茶園，遠離一切化學農藥與人工干預。茶樹與大地共生，孕育出無污染、甘甜潤喉的天然葉質。",
     images: [
-      "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1544650039-22886fbb4323?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1563911191491-e2d9f4555a15?auto=format&fit=crop&q=80&w=800",
+      "https://www.rhythmsmonthly.com/gallery/212/tea.03.jpg",
+      "https://www.newsmarket.com.tw/files/2018/10/%E9%9B%99%E8%83%9E%E8%83%8E.jpg",
+      "https://pic.chaopx.com/chao_origin_pic/20/24/03/ce778c406811f4d9972c38cca6efa5a2.jpg",
     ],
   },
   {
