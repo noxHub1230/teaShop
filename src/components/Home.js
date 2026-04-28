@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import "../styles/home.css";
 import { autoBreak } from "../material/tools";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { waveline, waveline_alt } from "../material/graphy";
+gsap.registerPlugin(ScrollTrigger);
 const HSContent = [
   {
     id: "section1_home",
@@ -38,11 +41,53 @@ const HSContent = [
   },
 ];
 function Home() {
+  useEffect(() => {
+  document.querySelectorAll(".HSsection").forEach((section) => {
+    const h2 = section.querySelector("h2");
+    const svg = section.querySelector("svg");
+    const textIntro = section.querySelector(".HStextIntro");
+    const before = section.querySelector(".HShome");
+    const images = section.querySelector(".HSImages");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        toggleActions: "play none none none",
+      }
+    });
+
+    // 第二個：h2 fadeIn
+    tl.to(h2, { opacity: 1, duration: 0.5 })
+
+    // 第三個：svg fadeIn（第二個動畫進度到1/3時）
+    tl.to(svg, { opacity: 1, duration: 0.5 }, "<0.167")
+
+    // 第四個：h2Up + svg fadeOut（第二個動畫播完後0.5秒）
+    tl.to(h2, { top: "2rem", duration: 0.5 }, "+=0.5")
+    tl.to(svg, { opacity: 0, duration: 0.5 }, "<")
+
+    // 第五個：HStextIntro fadeIn（第四個動畫進度到3/5時）
+    tl.to(textIntro, { opacity: 1, duration: 0.5 }, "<0.3")
+
+    // 第六七八個：maskExpand + h2BgExpand（第四個動畫播完時）
+    tl.to(before, { "--before-width": "15vw", duration: 0.5 }, ">")
+    tl.to(h2, { "--h2-height": "12rem", duration: 0.5 }, "<")
+    tl.to(textIntro, { "--intro-height": "12rem", duration: 0.5 }, "<")
+
+    // 第九個：HSImages fadeIn（第六個動畫進度到1/5時）
+    tl.to(images, { opacity: 1, duration: 0.5 }, "<0.1")
+  });
+
+  return () => ScrollTrigger.getAll().forEach(t => t.kill());
+  }, []);
+
+
   return (
     <div className="container-fluid py-0 px-0">
       <div id="BG" className="container-fluid py-5 px-0">
         <div
-          id="title"
+          id="title"s
           className="d-flex justify-content-center align-items-center"
         ></div>
         <span id="titleText" className="text-center">

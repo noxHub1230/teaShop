@@ -57,18 +57,28 @@ span {
 #section1_home {
   view-timeline: --section1_home-tl block;
 }
+#section2_home {
+  view-timeline: --section2_home-tl block;
+}
+#section3_home {
+  view-timeline: --section3_home-tl block;
+}
 .HSsection {
   position: sticky;
   top: 5.5rem;
   overflow-x: hidden;
   animation: linear fadeIn forwards;
-  animation-timeline: --section1_home-tl;
   animation-range: entry 10% cover 15%;
 }
+#section1_home .HSsection { animation-timeline: --section1_home-tl; }
+#section2_home .HSsection { animation-timeline: --section2_home-tl; }
+#section3_home .HSsection { animation-timeline: --section3_home-tl; }
 .HShome {
   position: relative;
   width: 100vw;
   height: 100vh;
+  background: var(--darkColor);
+  color: var(--lightColor);
 }
 .HShome::before,
 .HShome::after {
@@ -79,17 +89,16 @@ span {
   height: 100%;
   z-index: 3; /* 蓋在圖片上面 */
   pointer-events: none; /* 不擋住點擊 */
-  animation: linear maskExpand forwards;
-  animation-timeline: --section1_home-tl;
-  animation-range: cover 30% cover 35%;
 }
 .HShome::before {
   left: 0;
+  width: var(--before-width, 0);
   background: linear-gradient(to right, #43453c 70%, transparent);
 }
 
 .HShome::after {
   right: 0;
+  width: var(--before-width, 0);
   background: linear-gradient(to left, #43453c 70%, transparent);
 }
 .HShome h2 {
@@ -105,13 +114,6 @@ span {
     0 0 1rem black;
   font-family: "Hina Mincho", serif;
   font-size: 3rem;
-  animation:
-    linear fadeIn forwards,
-    linear h2Up forwards;
-  animation-timeline: --section1_home-tl;
-  animation-range:
-    cover 15% cover 18%,
-    cover 25% cover 30%;
 }
 .HShome h2::before {
   content: "";
@@ -119,23 +121,22 @@ span {
   z-index: -1;
   top: -5.5rem;
   left: -2rem;
-  height: 0;
+  height: var(--h2-height, 0);
   width: calc(100% + 4rem);
   background: linear-gradient(black 10%, var(--darkColor) 70%, transparent);
-  animation: linear h2BgExpand forwards;
-  animation-timeline: --section1_home-tl;
-  animation-range: cover 30% cover 35%;
 }
 .HShome svg {
   opacity: 0;
   animation:
     linear fadeIn forwards,
     linear fadeIn forwards reverse;
-  animation-timeline: --section1_home-tl;
   animation-range:
     cover 16% cover 20%,
     cover 25% cover 30%;
 }
+#section1_home svg { animation-timeline: --section1_home-tl; }
+#section2_home svg { animation-timeline: --section2_home-tl; }
+#section3_home svg { animation-timeline: --section3_home-tl; }
 .loopWaveLine {
   position: absolute;
   display: block;
@@ -170,9 +171,6 @@ path {
     0 0 1rem black;
   top: 32rem;
   margin: 0 auto;
-  animation: linear fadeIn forwards;
-  animation-timeline: --section1_home-tl;
-  animation-range: cover 28% cover 30%;
 }
 .HStextIntro::before {
   content: "";
@@ -180,7 +178,7 @@ path {
   z-index: -1;
   bottom: -0.5rem;
   left: -2rem;
-  height: 0;
+  height: var(--intro-height, 0);
   width: calc(100% + 4rem);
   background: linear-gradient(
     to top,
@@ -189,9 +187,6 @@ path {
     var(--darkColor) 70%,
     transparent 95%
   );
-  animation: linear h2BgExpand forwards;
-  animation-timeline: --section1_home-tl;
-  animation-range: cover 30% cover 35%;
 }
 .HSImages {
   opacity: 0;
@@ -204,13 +199,13 @@ path {
   grid-template: 65vh / repeat(3, 1fr);
   gap: 8rem;
   animation:
-    linear fadeIn forwards,
     linear HSleft forwards;
-  animation-timeline: --section1_home-tl;
   animation-range:
-    cover 31% cover 33%,
     cover 35% cover 80%;
-} /* home.css */
+} 
+#section1_home .HSImages { animation-timeline: --section1_home-tl; }
+#section2_home .HSImages { animation-timeline: --section2_home-tl; }
+#section3_home .HSImages { animation-timeline: --section3_home-tl; }
 .HSImageItem {
   background: var(--bg);
   background-size: cover;
@@ -219,10 +214,6 @@ path {
 .HSsection span {
   font-family: "LXGW WenKai TC", sans-serif;
   font-size: 1.25rem;
-}
-#section1_home_style {
-  background: var(--darkColor);
-  color: var(--lightColor);
 }
 #BG {
   position: fixed;
@@ -303,18 +294,5 @@ path {
   }
   to {
     transform: translateX(calc((300vw - 16rem) / 3 * -2 - 10vw));
-  }
-}
-@keyframes maskExpand {
-  to {
-    width: 15vw;
-  }
-}
-@keyframes h2BgExpand {
-  from {
-    height: 0;
-  }
-  to {
-    height: 12rem;
   }
 }
