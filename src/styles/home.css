@@ -77,7 +77,7 @@ span {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: var(--darkColor);
+  background:rgba(67, 69, 60, 0.7);
   color: var(--lightColor);
 }
 .HShome::before,
@@ -87,8 +87,8 @@ span {
   top: 0;
   width: 0;
   height: 100%;
-  z-index: 3; /* 蓋在圖片上面 */
-  pointer-events: none; /* 不擋住點擊 */
+  z-index: 3;
+  pointer-events: none;
 }
 .HShome::before {
   left: 0;
@@ -176,7 +176,7 @@ path {
   content: "";
   position: absolute;
   z-index: -1;
-  bottom: -0.5rem;
+  bottom: -1.25rem;
   left: -2rem;
   height: var(--intro-height, 0);
   width: calc(100% + 4rem);
@@ -201,7 +201,7 @@ path {
   animation:
     linear HSleft forwards;
   animation-range:
-    cover 35% cover 80%;
+    cover 20% cover 80%;
 } 
 #section1_home .HSImages { animation-timeline: --section1_home-tl; }
 #section2_home .HSImages { animation-timeline: --section2_home-tl; }

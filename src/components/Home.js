@@ -21,7 +21,7 @@ const HSContent = [
     id: "section2_home",
     styleId: "section2_home_style",
     title: "純淨契作",
-    text: "深植於雲霧繚繞的原始茶園，我們實行嚴格的有機耕作，拒絕一切化學農藥與人工干預。在自然的循環中，茶樹與大地共生，孕育出無污染、甘甜潤喉的天然葉質。",
+    text: "深植於雲霧繚繞的原始茶園，遠離一切化學農藥與人工干預。茶樹與大地共生，孕育出無污染、甘甜潤喉的天然葉質。",
     images: [
       "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1544650039-22886fbb4323?auto=format&fit=crop&q=80&w=800",
@@ -31,8 +31,8 @@ const HSContent = [
   {
     id: "section3_home",
     styleId: "section3_home_style",
-    title: "當代淬鍊",
-    text: "在百年工藝的基石上，我們大膽跨越傳統疆界。結合現代萃取科技與風味美學，開發出多樣化的茶飲體驗，讓悠久的茶文化在現代生活中，展現出靈動且富有創意的全新面貌。",
+    title: "新古並融",
+    text: "結合現代萃取科技與傳統工法，開發出多樣化的茶葉體驗，讓悠久的茶文化在現代生活中，展現出靈動且富有創意的全新面貌。",
     images: [
       "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=800",
