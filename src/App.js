@@ -7,10 +7,14 @@ import News from "./components/News";
 import History from "./components/History";
 import "./material/graphy";
 import "./material/tools";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 
 function App() {
+
   const [activeTab, setActiveTab] = useState("home");
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[]);
   const rwdNavCtrl = (tabName) => {
     setActiveTab(tabName);
     document.getElementById("rwdNav").checked = false;

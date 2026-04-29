@@ -132,7 +132,7 @@ span {
     linear fadeIn forwards reverse;
   animation-range:
     cover 16% cover 20%,
-    cover 25% cover 30%;
+    cover 25% cover 75%;
 }
 #section1_home svg { animation-timeline: --section1_home-tl; }
 #section2_home svg { animation-timeline: --section2_home-tl; }

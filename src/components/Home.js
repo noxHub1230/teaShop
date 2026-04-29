@@ -34,14 +34,15 @@ const HSContent = [
     title: "新古並融",
     text: "結合現代萃取科技與傳統工法，開發出多樣化的茶葉體驗，讓悠久的茶文化在現代生活中，展現出靈動且富有創意的全新面貌。",
     images: [
-      "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1492715757748-0fb83969600e?auto=format&fit=crop&q=80&w=800",
+      "https://jybio.com.tw/wp-content/uploads/2023/06/cq3.jpg",
+      "https://img.bonnie8630.com/2019/10/1571496745-dc15c5083ede14e89685581f0c40917d.jpg",
+      "https://bpic.588ku.com/back_list_pic/24/04/25/662c55174562224a1ca27860525527c1.jpg",
     ],
   },
 ];
 function Home() {
   useEffect(() => {
+  ScrollTrigger.refresh();
   document.querySelectorAll(".HSsection").forEach((section) => {
     const h2 = section.querySelector("h2");
     const svg = section.querySelector("svg");
