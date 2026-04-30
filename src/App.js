@@ -12,9 +12,6 @@ import React, { useState ,useEffect} from "react";
 function App() {
 
   const [activeTab, setActiveTab] = useState("home");
-  useEffect(()=>{
-    window.scrollTo(0,0);
-  },[]);
   const rwdNavCtrl = (tabName) => {
     setActiveTab(tabName);
     document.getElementById("rwdNav").checked = false;

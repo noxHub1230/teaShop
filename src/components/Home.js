@@ -42,7 +42,6 @@ const HSContent = [
 ];
 function Home() {
   useEffect(() => {
-  ScrollTrigger.refresh();
   document.querySelectorAll(".HSsection").forEach((section) => {
     const h2 = section.querySelector("h2");
     const svg = section.querySelector("svg");

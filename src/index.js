@@ -5,6 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+sessionStorage.clear(); 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
