@@ -10,7 +10,6 @@ import "./material/tools";
 import React, { useState ,useEffect} from "react";
 
 function App() {
-
   const [activeTab, setActiveTab] = useState("home");
   const rwdNavCtrl = (tabName) => {
     setActiveTab(tabName);
