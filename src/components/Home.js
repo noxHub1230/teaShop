@@ -42,41 +42,128 @@ const HSContent = [
 ];
 function Home() {
   useEffect(() => {
+    gsap.fromTo("#titleText", 
+      {top:"25rem", 
+        opacity: 0},
+      {top:"20rem", 
+        opacity: 1}
+    );
+    gsap.fromTo("#titleText",
+      {opacity:1,
+        scale:1,
+        transformOrigin:"center center",
+      },
+      {opacity:0,
+        scale:0.1,
+        transformOrigin:"centercenter",
+        scrollTrigger: {trigger: document.documentElement,
+      start: "top top",
+      end: "20% top",
+      scrub: true,}
+      }
+    );
+    gsap.fromTo("#contentHome",
+      { opacity:0,
+      clipPath:"inset(0% 50% 0% 50%)",
+      transformOrigin:"center center",
+      },
+      { opacity:1,
+        clipPath:"inset(0% 0% 0% 0%)",
+        transformOrigin:"center center",
+      scrollTrigger: {trigger: "#contentHome",
+      start: "top bottom",
+      end: "top top",
+      scrub: true,}
+    });
   document.querySelectorAll(".HSsection").forEach((section) => {
-    const h2 = section.querySelector("h2");
-    const svg = section.querySelector("svg");
+    const h2        = section.querySelector("h2");
+    const svg       = section.querySelector("svg");
     const textIntro = section.querySelector(".HStextIntro");
-    const before = section.querySelector(".HShome");
-    const images = section.querySelector(".HSImages");
+    const before    = section.querySelector(".HShome");
+    const images    = section.querySelector(".HSImages");
+    const container = section.closest(".scrollDistance"); // HSImages 捲動要以整個高區塊為基準
+
+    // ── 塊一：scrub 捲動動畫（隨捲動進度同步）────────────────────
+    
+    // .HSsection fadeIn：進入畫面時淡入（原 CSS entry 10%→cover 15%）
+    gsap.fromTo(section,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#contentHome",
+          start: "top 90%",
+          end:   "top 85%",
+          scrub: true,
+        },
+      }
+    );
+
+    // svg fadeIn：原 CSS cover 16%→20%
+    gsap.fromTo(svg,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#contentHome",
+          start: "top 84%",
+          end:   "top 80%",
+          scrub: true,
+        },
+      }
+    );
+
+    // svg fadeOut：原 CSS cover 25%→75%
+    gsap.fromTo(svg,
+      { opacity: 1 },
+      {
+        opacity: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#contentHome",
+          start: "top 75%",
+          end:   "top 25%",
+          scrub: true,
+        },
+      }
+    );
+
+    // .HSImages 水平捲動：原 CSS HSleft cover 20%→80%
+    gsap.fromTo(images,
+      { x: 0 },
+      {
+        x: "calc((300vw - 16rem) / 3 * -2 - 10vw)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#contentHome",
+          start: "top 80%",
+          end:   "top 20%",
+          scrub: true,
+        },
+      }
+    );
+
+    // ── 塊二：一次性入場序列（黏在 top top 後觸發）────────────────
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
         toggleActions: "play none none none",
-      }
+      },
     });
 
-    // 第二個：h2 fadeIn
-    tl.to(".HShome h2", { opacity: 1, duration: 0.5 })
-
-    // 第三個：svg fadeIn（第二個動畫進度到1/3時）
-    tl.to(".HShome svg", { opacity: 1, duration: 0.5 }, "<0.167")
-
-    // 第四個：h2Up + svg fadeOut（第二個動畫播完後0.5秒）
-    tl.to(".HShome h2", { top: "2rem", duration: 0.5 }, "+=0.5")
-    tl.to(".HShome svg", { opacity: 0, duration: 0.5 }, "<")
-
-    // 第五個：HStextIntro fadeIn（第四個動畫進度到3/5時）
-    tl.to(".HShome .HStextIntro", { opacity: 1, duration: 0.5 }, "<0.3")
-
-    // 第六七八個：maskExpand + h2BgExpand（第四個動畫播完時）
-    tl.to(".HShome .HSbefore", { "--before-width": "15vw", duration: 0.5 }, ">")
-    tl.to(".HShome h2", { "--h2-height": "12rem", duration: 0.5 }, "<")
-    tl.to(".HShome .HStextIntro", { "--intro-height": "12rem", duration: 0.5 }, "<")
-
-    // 第九個：HSImages fadeIn（第六個動畫進度到1/5時）
-    tl.to(".HShome .HSImages", { opacity: 1, duration: 0.5 }, "<0.1")
+    tl.to(h2,        { opacity: 1, duration: 0.5 })
+    tl.to(svg,       { opacity: 1, duration: 0.5 },  "<0.167")
+    tl.to(h2,        { top: "2rem", duration: 0.5 }, "+=0.5")
+    tl.to(svg,       { opacity: 0, duration: 0.5 },  "<")
+    tl.to(textIntro, { opacity: 1, duration: 0.5 },  "<0.3")
+    tl.to(before,    { "--before-width": "15vw", duration: 0.5 }, ">")
+    tl.to(h2,        { "--h2-height": "12rem",   duration: 0.5 }, "<")
+    tl.to(textIntro, { "--intro-height": "12rem", duration: 0.5 }, "<")
+    tl.to(images,    { opacity: 1, duration: 0.5 }, "<0.1")
   });
 
   return () => ScrollTrigger.getAll().forEach(t => t.kill());
@@ -87,7 +174,7 @@ function Home() {
     <div className="container-fluid py-0 px-0">
       <div id="BG" className="container-fluid py-5 px-0">
         <div
-          id="title"s
+          id="title"
           className="d-flex justify-content-center align-items-center"
         ></div>
         <span id="titleText" className="text-center">

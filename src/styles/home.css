@@ -21,11 +21,11 @@ span {
   font-size: 5rem;
   font-family: "Hina Mincho", serif;
   white-space: nowrap;
-  animation:
+  /* animation:
     fadeInb 1s forwards,
     DisapearByScroll_title 1s linear both;
   animation-timeline: auto, scroll();
-  animation-range: 0vh 70vh;
+  animation-range: 0vh 70vh; */
 }
 #subtitle {
   position: relative;
@@ -41,14 +41,15 @@ span {
 }
 #contentHome {
   position: relative;
+  z-index: 800;
   top: 50rem;
   background: linear-gradient(
     rgba(208, 217, 190, 0.9) 50%,
     rgba(67, 69, 60, 0.9) 100%
   );
-  animation: DisapearByScroll_container 1s linear both;
+  /* animation: DisapearByScroll_container 1s linear both;
   animation-timeline: scroll();
-  animation-range: 10vh 30vh;
+  animation-range: 10vh 30vh; */
   overflow: visible;
 }
 .scrollDistance {
@@ -67,12 +68,12 @@ span {
   position: sticky;
   top: 5.5rem;
   overflow-x: hidden;
-  animation: linear fadeIn forwards;
-  animation-range: entry 10% cover 15%;
+  /* animation: linear fadeIn forwards;
+  animation-range: entry 10% cover 15%; */
 }
-#section1_home .HSsection { animation-timeline: --section1_home-tl; }
+/* #section1_home .HSsection { animation-timeline: --section1_home-tl; }
 #section2_home .HSsection { animation-timeline: --section2_home-tl; }
-#section3_home .HSsection { animation-timeline: --section3_home-tl; }
+#section3_home .HSsection { animation-timeline: --section3_home-tl; } */
 .HShome {
   position: relative;
   width: 100vw;
@@ -127,16 +128,16 @@ span {
 }
 .HShome svg {
   opacity: 0;
-  animation:
+  /* animation:
     linear fadeIn forwards,
     linear fadeIn forwards reverse;
   animation-range:
     cover 16% cover 20%,
-    cover 25% cover 75%;
+    cover 25% cover 75%; */
 }
-#section1_home svg { animation-timeline: --section1_home-tl; }
+/* #section1_home svg { animation-timeline: --section1_home-tl; }
 #section2_home svg { animation-timeline: --section2_home-tl; }
-#section3_home svg { animation-timeline: --section3_home-tl; }
+#section3_home svg { animation-timeline: --section3_home-tl; } */
 .loopWaveLine {
   position: absolute;
   display: block;
@@ -198,14 +199,14 @@ path {
   display: grid;
   grid-template: 65vh / repeat(3, 1fr);
   gap: 8rem;
-  animation:
+  /* animation:
     linear HSleft forwards;
   animation-range:
-    cover 20% cover 80%;
+    cover 20% cover 80%; */
 } 
-#section1_home .HSImages { animation-timeline: --section1_home-tl; }
+/* #section1_home .HSImages { animation-timeline: --section1_home-tl; }
 #section2_home .HSImages { animation-timeline: --section2_home-tl; }
-#section3_home .HSImages { animation-timeline: --section3_home-tl; }
+#section3_home .HSImages { animation-timeline: --section3_home-tl; } */
 .HSImageItem {
   background: var(--bg);
   background-size: cover;
