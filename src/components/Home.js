@@ -58,25 +58,25 @@ function Home() {
     });
 
     // 第二個：h2 fadeIn
-    tl.to(h2, { opacity: 1, duration: 0.5 })
+    tl.to(".HShome h2", { opacity: 1, duration: 0.5 })
 
     // 第三個：svg fadeIn（第二個動畫進度到1/3時）
-    tl.to(svg, { opacity: 1, duration: 0.5 }, "<0.167")
+    tl.to(".HShome svg", { opacity: 1, duration: 0.5 }, "<0.167")
 
     // 第四個：h2Up + svg fadeOut（第二個動畫播完後0.5秒）
-    tl.to(h2, { top: "2rem", duration: 0.5 }, "+=0.5")
-    tl.to(svg, { opacity: 0, duration: 0.5 }, "<")
+    tl.to(".HShome h2", { top: "2rem", duration: 0.5 }, "+=0.5")
+    tl.to(".HShome svg", { opacity: 0, duration: 0.5 }, "<")
 
     // 第五個：HStextIntro fadeIn（第四個動畫進度到3/5時）
-    tl.to(textIntro, { opacity: 1, duration: 0.5 }, "<0.3")
+    tl.to(".HShome .HStextIntro", { opacity: 1, duration: 0.5 }, "<0.3")
 
     // 第六七八個：maskExpand + h2BgExpand（第四個動畫播完時）
-    tl.to(before, { "--before-width": "15vw", duration: 0.5 }, ">")
-    tl.to(h2, { "--h2-height": "12rem", duration: 0.5 }, "<")
-    tl.to(textIntro, { "--intro-height": "12rem", duration: 0.5 }, "<")
+    tl.to(".HShome .HSbefore", { "--before-width": "15vw", duration: 0.5 }, ">")
+    tl.to(".HShome h2", { "--h2-height": "12rem", duration: 0.5 }, "<")
+    tl.to(".HShome .HStextIntro", { "--intro-height": "12rem", duration: 0.5 }, "<")
 
     // 第九個：HSImages fadeIn（第六個動畫進度到1/5時）
-    tl.to(images, { opacity: 1, duration: 0.5 }, "<0.1")
+    tl.to(".HShome .HSImages", { opacity: 1, duration: 0.5 }, "<0.1")
   });
 
   return () => ScrollTrigger.getAll().forEach(t => t.kill());
