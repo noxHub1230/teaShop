@@ -9,11 +9,9 @@ a {
   cursor: pointer;
 }
 footer {
-  position: fixed;
   width: 100%;
   z-index: 2000;
-  bottom: 0;
-  background-color: var(--darkColor);
+  background-color: black;
   color: var(--lightColor);
   font-family: "LXGW WenKai TC", sans-serif !important;
   text-align: center;

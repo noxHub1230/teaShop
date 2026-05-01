@@ -42,10 +42,11 @@ span {
 #contentHome {
   position: relative;
   z-index: 800;
-  top: 50rem;
+  margin-top: 50rem;
   background: linear-gradient(
-    rgba(208, 217, 190, 0.9) 50%,
-    rgba(67, 69, 60, 0.9) 100%
+    rgba(208, 217, 190, 0.9) 34%,
+    rgba(151, 128, 46, 0.9) 67%,
+    rgba(106, 35, 0, 0.9) 100%
   );
   /* animation: DisapearByScroll_container 1s linear both;
   animation-timeline: scroll();
@@ -77,7 +78,7 @@ span {
 .HShome {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 94.5vh;
   background:rgba(67, 69, 60, 0.7);
   color: var(--lightColor);
 }
@@ -170,7 +171,7 @@ path {
   text-shadow:
     0 0 1rem black,
     0 0 1rem black;
-  top: 33rem;
+  top: 34rem;
   margin: 0 auto;
 }
 .HStextIntro::before {
@@ -184,7 +185,7 @@ path {
   background: linear-gradient(
     to top,
     transparent 1%,
-    var(--darkColor) 20%,
+    var(--darkColor) 5%,
     var(--darkColor) 70%,
     transparent 95%
   );
@@ -194,7 +195,7 @@ path {
   position: relative;
   z-index: 1;
   width: 300vw;
-  top: -5rem;
+  top: -3rem;
   left: calc(50vw - (300vw - 16rem) / 6);
   display: grid;
   grid-template: 65vh / repeat(3, 1fr);
