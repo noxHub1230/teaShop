@@ -131,14 +131,15 @@ function Home() {
     );
 
     // .HSImages 水平捲動：原 CSS HSleft cover 20%→80%
+    const translateXValue = -((window.innerWidth*3 - 16*16) / 3 * 2 + window.innerWidth*0.1);
     gsap.fromTo(images,
       { x: 0 },
       {
-        x: "calc((300vw - 16rem) / 3 * -2 - 10vw)",
+        x: translateXValue,
         ease: "none",
         scrollTrigger: {
-          trigger: "#contentHome",
-          start: "top 80%",
+          trigger:container,
+          start:"top 80%" ,
           end:   "top 20%",
           scrub: true,
         },
