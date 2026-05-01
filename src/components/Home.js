@@ -132,16 +132,17 @@ function Home() {
 
     // .HSImages 水平捲動：原 CSS HSleft cover 20%→80%
     const translateXValue = -((window.innerWidth*3 - 16*16) / 3 * 2 + window.innerWidth*0.1);
-    gsap.fromTo(images,
+    const imagesMoveLeft = gsap.fromTo(images,
       { x: 0 },
       {
         x: translateXValue,
         ease: "none",
         scrollTrigger: {
-          trigger:container,
-          start:"top 80%" ,
-          end:   "top 20%",
+          trigger:section,
+          start:"top+=100% top" ,
+          end:   "top+=300% top",
           scrub: true,
+          enabled: false,
         },
       }
     );
@@ -152,7 +153,7 @@ function Home() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        toggleActions: "play none none none",
+        toggleActions: "play none none reverse",
       },
     });
 
@@ -164,7 +165,9 @@ function Home() {
     tl.to(before,    { "--before-width": "15vw", duration: 0.5 }, ">")
     tl.to(h2,        { "--h2-height": "12rem",   duration: 0.5 }, "<")
     tl.to(textIntro, { "--intro-height": "12rem", duration: 0.5 }, "<")
-    tl.to(images,    { opacity: 1, duration: 0.5 }, "<0.1")
+    tl.to(images,    { opacity: 1, duration: 0.5 ,onComplete:()=>{imagesMoveLeft.scrollTrigger.enabled=true;
+     
+    }}, "<0.1")
   });
 
   return () => ScrollTrigger.getAll().forEach(t => t.kill());
