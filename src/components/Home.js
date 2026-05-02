@@ -4,6 +4,9 @@ import { autoBreak } from "../material/tools";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { waveline, waveline_alt } from "../material/graphy";
+import carouselImage1 from "../material/carousel_home_image1.png";
+import carouselImage2 from "../material/carousel_home_image2.png";
+import carouselImage3 from "../material/carousel_home_image3.png";
 gsap.registerPlugin(ScrollTrigger);
 const HSContent = [
   {
@@ -39,6 +42,34 @@ const HSContent = [
       "https://bpic.588ku.com/back_list_pic/24/04/25/662c55174562224a1ca27860525527c1.jpg",
     ],
   },
+];
+const carouselItems=[
+  {
+    image: carouselImage1,
+    text:"古林萃室 x 五大名家氏之一「千鶴」聯名茶款【千鶴幽青茶】期間限定上市！",
+  },
+  {
+    image: carouselImage2,
+    text:"古林萃室 x 名號劍使末納刻希亞聯名茶款【夜月幽焰茶】期間限定上市！",
+  },
+  {
+    image: carouselImage3,
+    text:"古林萃室綠茶系列商品期間限定優惠，購滿10件享七折！",
+  }
+];
+const manageNews =[
+  {
+    date:"2026.05.01",
+    type:"休息公告",
+    caption:"適逢勞動節放假一天"
+  }
+];
+const eventNews =[
+  {
+    date:"2026.04.20",
+    type:"期間限定",
+    caption:"端午節限定茶禮盒預購開跑！"
+  }
 ];
 function Home() {
   useEffect(() => {
@@ -172,8 +203,6 @@ function Home() {
 
   return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
-
-
   return (
     <div className="container-fluid py-0 px-0">
       <div id="BG" className="container-fluid py-5 px-0">
@@ -187,6 +216,63 @@ function Home() {
         </span>
       </div>
       <div id="contentHome">
+        <div id="pickedNews">
+          
+          <div id="carousel_home" 
+          className="carousel slide" 
+          data-bs-ride="carousel">
+            <div style={{textAlign:"center"}}><h3>近期焦點<hr/></h3></div>
+            <div className="carousel-indicators ">
+              <button type="button"
+                      data-bs-target="#carousel_home"
+                      data-bs-slide-to="0"
+                      className="active"
+                      aria-current="true"
+                      aria-label="Slide 1"
+              ></button>
+              <button type="button"
+                      data-bs-target="#carousel_home"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"
+              ></button>
+              <button type="button"
+                      data-bs-target="#carousel_home"
+                      data-bs-slide-to="2"
+                      aria-label="Slide 3"
+              ></button>
+            </div>
+            <div className="carousel-inner">
+              {carouselItems.map((item, i) => (
+                <div className={`carousel-item ${i === 0 ? "active" : ""}`} key={i}>
+                  <img src={item.image} className="d-block w-100" alt={`Slide ${i+1}`} />
+                  <div className="carousel-caption d-none d-md-block">
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carousel_home" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#carousel_home" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div id="leftNews_home">
+            <div style={{textAlign:"center"}}><h3>營業消息<hr/></h3></div>
+              {manageNews.map((news,i)=>(
+                <span key={i}>{news.date} - 【{news.type}】 {news.caption}<hr style={{border:"1px dashed var(--darkColor)"}}/></span>
+              ))}
+          </div>
+          <div id="rightNews_home">
+            <div style={{textAlign:"center"}}><h3>活動消息<hr/></h3></div>
+              {eventNews.map((news,i)=>(
+                <span key={i}>{news.date} - 【{news.type}】 {news.caption}<hr style={{border:"1px dashed var(--darkColor)"}}/></span>
+              ))}
+          </div>
+        </div>
         {HSContent.map((section) => (
           <div
             className="scrollDistance"

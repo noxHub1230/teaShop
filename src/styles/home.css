@@ -53,6 +53,117 @@ span {
   animation-range: 10vh 30vh; */
   overflow: visible;
 }
+#pickedNews {
+  height: auto;
+  width:100%;
+  background: var(--lightColor);
+  display:grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "carousel carousel"
+    "left   right"; 
+  place-items: center;
+  gap: 2rem;
+}
+#pickedNews span{
+  color: var(--darkColor);
+  font-family: "LXGW WenKai TC", sans-serif;
+  font-size: 1.25rem;
+}
+#carousel_home {
+  grid-area: carousel;
+  width: 80%;
+  height: 80%;
+  background: var(--bg);
+}
+#pickedNews h3{
+  font-family: "Hina Mincho";
+  font-weight: bold;;
+  color: var(--darkColor);  
+}
+#pickedNews hr{
+  border: 0.1rem solid var(--darkColor);
+}
+.carousel-inner::before{
+  display: block;
+  position:absolute;
+  content: "";
+  z-index: 1;
+  height:100%;
+  width: 15%;
+  background: linear-gradient(to right,
+  black 0%,
+  transparent 100%
+  );
+}
+.carousel-inner::after{
+  display: block;
+  position:absolute;
+  content: "";
+  z-index: 1;
+  height:100%;
+  width: 15%;
+  right:0;
+  background: linear-gradient(to left,
+  black 0%,
+  transparent 100%
+  );
+}
+.carousel-indicators{
+  position:absolute;
+  bottom:-8rem !important;
+  gap:1rem;
+}
+.carousel-control-prev,
+.carousel-control-next{
+  position: absolute;
+  top: 55% !important;
+  width: 3rem;
+  height: 3rem;
+  scale: 2;
+}
+.carousel-inner p{
+  width: 100%;
+  position:absolute;
+  bottom:2rem;
+  left:50%;
+  transform:translateX(-50%);
+  color:var(--lightColor);
+  font-family: "LXGW WenKai TC", sans-serif;
+  font-size: 1.5rem;
+}
+.carousel-inner p::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -1rem;
+  left: -2rem;
+  height: calc(100% + 2rem);
+  width: calc(100% + 4rem);
+  background: linear-gradient(
+    to right,
+    transparent 1%,
+    var(--darkColor) 10%,
+    var(--darkColor) 90%,
+    transparent 99%
+  );
+  opacity: 0.8;
+}
+#leftNews_home {
+  grid-area: left;
+  width: 80%;
+  height: 80%;
+  background: var(--bg);
+  justify-self: end;
+}
+#rightNews_home {
+  grid-area: right;
+  width: 80%;
+  height: 80%;
+  background: var(--bg);
+  justify-self: start;
+}
 .scrollDistance {
   height: 450vh;
 }

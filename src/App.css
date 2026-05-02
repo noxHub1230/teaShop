@@ -13,7 +13,7 @@
   width: 5rem;
   height: 5rem;
   border-radius: 100%;
-  background-color: var(--darkColor);
+  background:radial-gradient(black,var(--darkColor));
   color: var(--lightColor);
   opacity: 0.7;
   border: none;
@@ -21,7 +21,7 @@
 }
 #toTop:hover{
   opacity: 1;
-  filter: drop-shadow(0 0 10px var(--lightColor));
+  filter: drop-shadow(0 0 5px var(--lightColor));
 }
 a {
   cursor: pointer;
