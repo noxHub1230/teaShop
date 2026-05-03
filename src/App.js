@@ -109,8 +109,8 @@ function App() {
       >
         ︿<br/>TOP
       </button>
-      <nav>
-        <div className="d-flex flex-row nav" style={activeTab==="home"?{background: "rgba(208, 217, 190, 0.8)"}:{background:"var(--lightColor)"}}>
+      <nav style={activeTab==="home"?{background: "rgba(208, 217, 190, 0.8)"}:{background:"var(--lightColor)"}}>
+        <div className="d-flex flex-row nav" >
           <a
             className="navbar-brand"
             onClick={() => rwdNavCtrl("home")}
