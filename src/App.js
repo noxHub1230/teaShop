@@ -16,16 +16,16 @@ const navItems=[
     tabName:"news"
   },
   {
-    label:"經營歷史",
-    tabName:"history"
-  },
-  {
     label:"特色產品",
     tabName:"products"
   },
   {
     label:"門市據點",
     tabName:"contact"
+  },
+  {
+    label:"經營歷史",
+    tabName:"history"
   },
 ];
 const socialLinks=[

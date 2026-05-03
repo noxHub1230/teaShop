@@ -106,6 +106,16 @@ function Home() {
       end: "top top",
       scrub: true,}
     });
+    gsap.fromTo("#pickedNews",
+      {opacity:0},
+      {opacity:1,
+        scrollTrigger: {trigger: "#pickedNews",
+      start: "top 20%",
+      end: "top top",
+      scrub: true,
+        }
+      }
+    )
   document.querySelectorAll(".HSsection").forEach((section) => {
     const h2        = section.querySelector("h2");
     const svg       = section.querySelector("svg");
@@ -124,7 +134,7 @@ function Home() {
         ease: "none",
         scrollTrigger: {
           trigger: "#contentHome",
-          start: "top 90%",
+          start: "top top",
           end:   "top 85%",
           scrub: true,
         },
@@ -217,7 +227,6 @@ function Home() {
       </div>
       <div id="contentHome">
         <div id="pickedNews">
-          
           <div id="carousel_home" 
           className="carousel slide" 
           data-bs-ride="carousel">
