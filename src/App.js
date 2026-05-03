@@ -1,10 +1,10 @@
 import logo from "./material/logo.png";
 import "./App.css";
-import Home from "./components/Home";
-import Products from "./components/Products";
-import Contact from "./components/Contact";
-import News from "./components/News";
-import History from "./components/History";
+import Home from "./tabPages/Home";
+import Products from "./tabPages/Products";
+import Contact from "./tabPages/Contact";
+import News from "./tabPages/News";
+import History from "./tabPages/History";
 import "./material/graphy";
 import "./material/tools";
 import React, { useState ,useEffect} from "react";
@@ -110,7 +110,7 @@ function App() {
         ︿<br/>TOP
       </button>
       <nav>
-        <div className="d-flex flex-row nav">
+        <div className="d-flex flex-row nav" style={activeTab==="home"?{background: "rgba(208, 217, 190, 0.8)"}:{background:"var(--lightColor)"}}>
           <a
             className="navbar-brand"
             onClick={() => rwdNavCtrl("home")}

@@ -4,9 +4,7 @@ import { autoBreak } from "../material/tools";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { waveline, waveline_alt } from "../material/graphy";
-import carouselImage1 from "../material/carousel_home_image1.png";
-import carouselImage2 from "../material/carousel_home_image2.png";
-import carouselImage3 from "../material/carousel_home_image3.png";
+import FeatureCarousel from "../components/featureCarousel/featureCarousel";
 gsap.registerPlugin(ScrollTrigger);
 const HSContent = [
   {
@@ -43,20 +41,6 @@ const HSContent = [
     ],
   },
 ];
-const carouselItems=[
-  {
-    image: carouselImage1,
-    text:"古林萃室 x 五大名家氏之一「千鶴」聯名茶款【千鶴幽青茶】期間限定上市！",
-  },
-  {
-    image: carouselImage2,
-    text:"古林萃室 x 名號劍使末納刻希亞聯名茶款【夜月幽焰茶】期間限定上市！",
-  },
-  {
-    image: carouselImage3,
-    text:"古林萃室綠茶系列商品期間限定優惠，購滿10件享七折！",
-  }
-];
 const manageNews =[
   {
     date:"2026.05.01",
@@ -71,15 +55,15 @@ const eventNews =[
     caption:"端午節限定茶禮盒預購開跑！"
   }
 ];
-function Home() {
+export default function Home() {
   useEffect(() => {
-    gsap.fromTo("#titleText", 
+    gsap.fromTo("#titleText_home", 
       {top:"25rem", 
         opacity: 0},
       {top:"20rem", 
         opacity: 1}
     );
-    gsap.fromTo("#titleText",
+    gsap.fromTo("#titleText_home",
       {opacity:1,
         scale:1,
         transformOrigin:"center center",
@@ -93,7 +77,7 @@ function Home() {
       scrub: true,}
       }
     );
-    gsap.fromTo("#contentHome",
+    gsap.fromTo("#contentHome_home",
       { opacity:0,
       clipPath:"inset(0% 50% 0% 50%)",
       transformOrigin:"center center",
@@ -101,39 +85,39 @@ function Home() {
       { opacity:1,
         clipPath:"inset(0% 0% 0% 0%)",
         transformOrigin:"center center",
-      scrollTrigger: {trigger: "#contentHome",
+      scrollTrigger: {trigger: "#contentHome_home",
       start: "top bottom",
       end: "top top",
       scrub: true,}
     });
-    gsap.fromTo("#pickedNews",
+    gsap.fromTo("#pickedNews_home",
       {opacity:0},
       {opacity:1,
-        scrollTrigger: {trigger: "#pickedNews",
+        scrollTrigger: {trigger: "#pickedNews_home",
       start: "top 20%",
       end: "top top",
       scrub: true,
         }
       }
     )
-  document.querySelectorAll(".HSsection").forEach((section) => {
+  document.querySelectorAll(".HSsection_home").forEach((section) => {
     const h2        = section.querySelector("h2");
     const svg       = section.querySelector("svg");
-    const textIntro = section.querySelector(".HStextIntro");
-    const before    = section.querySelector(".HShome");
-    const images    = section.querySelector(".HSImages");
-    const container = section.closest(".scrollDistance"); // HSImages 捲動要以整個高區塊為基準
+    const textIntro = section.querySelector(".HStextIntro_home");
+    const before    = section.querySelector(".HShome_home");
+    const images    = section.querySelector(".HSImages_home");
+    const container = section.closest(".scrollDistance_home"); // HSImages 捲動要以整個高區塊為基準
 
     // ── 塊一：scrub 捲動動畫（隨捲動進度同步）────────────────────
     
-    // .HSsection fadeIn：進入畫面時淡入（原 CSS entry 10%→cover 15%）
+    // .HSsection_home fadeIn：進入畫面時淡入（原 CSS entry 10%→cover 15%）
     gsap.fromTo(section,
       { opacity: 0 },
       {
         opacity: 1,
         ease: "none",
         scrollTrigger: {
-          trigger: "#contentHome",
+          trigger: "#contentHome_home",
           start: "top top",
           end:   "top 85%",
           scrub: true,
@@ -148,7 +132,7 @@ function Home() {
         opacity: 1,
         ease: "none",
         scrollTrigger: {
-          trigger: "#contentHome",
+          trigger: "#contentHome_home",
           start: "top 84%",
           end:   "top 80%",
           scrub: true,
@@ -163,7 +147,7 @@ function Home() {
         opacity: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: "#contentHome",
+          trigger: "#contentHome_home",
           start: "top 75%",
           end:   "top 25%",
           scrub: true,
@@ -171,7 +155,7 @@ function Home() {
       }
     );
 
-    // .HSImages 水平捲動：原 CSS HSleft cover 20%→80%
+    // .HSImages_home 水平捲動：原 CSS HSleft cover 20%→80%
     const translateXValue = -((window.innerWidth*3 - 16*16) / 3 * 2 + window.innerWidth*0.1);
     const imagesMoveLeft = gsap.fromTo(images,
       { x: 0 },
@@ -214,63 +198,22 @@ function Home() {
   return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
   return (
-    <div className="container-fluid py-0 px-0">
-      <div id="BG" className="container-fluid py-5 px-0">
+    <div className="page_home container-fluid py-0 px-0">
+      <div id="BG_home" className="container-fluid py-5 px-0">
         <div
-          id="title"
+          id="title_home"
           className="d-flex justify-content-center align-items-center"
         ></div>
-        <span id="titleText" className="text-center">
+        <span id="titleText_home" className="text-center">
           古林萃室 <hr />
-          <small id="subtitle">採擷天地精華，品味自然甘醇</small>
+          <small id="subtitle_home">採擷天地精華，品味自然甘醇</small>
         </span>
       </div>
-      <div id="contentHome">
-        <div id="pickedNews">
-          <div id="carousel_home" 
-          className="carousel slide" 
-          data-bs-ride="carousel">
-            <div style={{textAlign:"center"}}><h3>近期焦點<hr/></h3></div>
-            <div className="carousel-indicators ">
-              <button type="button"
-                      data-bs-target="#carousel_home"
-                      data-bs-slide-to="0"
-                      className="active"
-                      aria-current="true"
-                      aria-label="Slide 1"
-              ></button>
-              <button type="button"
-                      data-bs-target="#carousel_home"
-                      data-bs-slide-to="1"
-                      aria-label="Slide 2"
-              ></button>
-              <button type="button"
-                      data-bs-target="#carousel_home"
-                      data-bs-slide-to="2"
-                      aria-label="Slide 3"
-              ></button>
-            </div>
-            <div className="carousel-inner">
-              {carouselItems.map((item, i) => (
-                <div className={`carousel-item ${i === 0 ? "active" : ""}`} key={i}>
-                  <img src={item.image} className="d-block w-100" alt={`Slide ${i+1}`} />
-                  <div className="carousel-caption d-none d-md-block">
-                    <p>{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carousel_home" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carousel_home" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
+      <div id="contentHome_home">
+        <div id="pickedNews_home">
+          <FeatureCarousel />
           <div id="leftNews_home">
-            <div style={{textAlign:"center"}}><h3>營業消息<hr/></h3></div>
+            <div style={{textAlign:"center"}}><h3>&#29151;&#26989;&#28040;&#24687;<hr/></h3></div>
               {manageNews.map((news,i)=>(
                 <span key={i}>{news.date} - 【{news.type}】 {news.caption}<hr style={{border:"1px dashed var(--darkColor)"}}/></span>
               ))}
@@ -284,34 +227,34 @@ function Home() {
         </div>
         {HSContent.map((section) => (
           <div
-            className="scrollDistance"
+            className="scrollDistance_home"
             id={section.id}
             key={section.id}
             style={{ "--tl": `--${section.id}-tl` }}
           >
-            <div className="HSsection">
-              <div className="HShome" id={section.styleId}>
+            <div className="HSsection_home">
+              <div className="HShome_home" id={section.styleId}>
                 <h2>{section.title}</h2>
                 <svg
-                  className="loopWaveLine"
+                  className="loopWaveLine_home"
                   viewBox="0 -250 6000 500"
                   preserveAspectRatio="none"
                 >
-                  <g className="waveGroup">
+                  <g className="waveGroup_home">
                     <path d={waveline} />
                     <path d={waveline} transform="translate(3000 0)" />
                   </g>
-                  <g className="waveGroupReverse">
+                  <g className="waveGroupReverse_home">
                     <path d={waveline} />
                     <path d={waveline} transform="translate(3000 0)" />
                   </g>
                 </svg>
-                <div className="HStextIntro">{autoBreak(section.text)}</div>
-                <div className="HSImages">
+                <div className="HStextIntro_home">{autoBreak(section.text)}</div>
+                <div className="HSImages_home">
                   {section.images.map((image, i) => (
                     <div
                       key={i}
-                      className="HSImageItem"
+                      className="HSImageItem_home"
                       style={{ "--bg": `url(${image})` }}
                     ></div>
                   ))}
@@ -323,6 +266,4 @@ function Home() {
       </div>
     </div>
   );
-}
-
-export default Home;
+};

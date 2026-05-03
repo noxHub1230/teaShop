@@ -5,6 +5,10 @@
   --lightColor: #d0d9be;
   --navHeight: 5.5rem;
 }
+.tab-content .tab-page{
+  margin-top: calc(var(--navHeight));
+  min-height: 100vh;
+}
 #toTop{
   position:fixed;
   z-index: 2001;
@@ -23,6 +27,10 @@
   opacity: 1;
   filter: drop-shadow(0 0 5px var(--lightColor));
 }
+h1,h2,h3{
+  font-family: "Hina Mincho";
+  color:var(--darkColor);
+}
 a {
   cursor: pointer;
 }
@@ -36,7 +44,6 @@ footer {
   padding: 1rem;
 }
 nav {
-  background-color: rgba(208, 217, 190, 0.8);
   overflow: hidden;
   position: fixed;
   width: 100%;
