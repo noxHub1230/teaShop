@@ -4,6 +4,10 @@
 h1,h2,h3{
   font-weight: bold;
 }
+button{
+  background: transparent;
+  border: none;
+}
 #BG_products{
   width: 100%;
   height: 100%;
@@ -21,4 +25,57 @@ margin-top: 2rem;
 width: 80%;
 border: 2px solid var(--darkColor);
 /* border-radius: 20px; */
+}
+#toolBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  height: 3rem;
+}
+#dpFilter{
+  display: flex;
+  gap:1rem;
+}
+#dpFilter .dropdown-toggle::after {
+  transition: transform 0.3s ease;
+}
+#dpFilter .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+#dpFilter,#sortFilter{
+  font-family: "LXGW Wenkai TC",sans-serif;
+  color: var(--darkColor);
+}
+#sortFilter .dropdown-toggle::after{
+  display: none;
+}
+#sortFilter {
+  display: flex;
+  align-items: center;
+}
+#sortFilter .dropdown {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+#sortFilter i{
+  color: var(--darkColor);
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+#sortFilter li{
+  padding-left: 2rem;
+}
+#dpFilter button:hover,#sortFilter i:hover{
+  text-shadow: 0 0 2px var(--darkColor);
+}
+#productsShow .card{
+  background: transparent;
+  
 }
