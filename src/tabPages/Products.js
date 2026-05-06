@@ -1,6 +1,10 @@
 import React, { use, useState } from 'react';
 import "../styles/products.css";
 import FeatureCarousel from '../components/featureCarousel/featureCarousel';
+import product0 from"../material/products/products_0.png";
+import product1 from"../material/products/products_1.png";
+import product2 from"../material/products/products_2.png";
+
 const filter=[
   {type:"包裝",
     options:["罐裝","盒裝"]
@@ -9,7 +13,7 @@ const filter=[
     options:["助眠","提神","消化","養生"]
   },
   {type:"形式",
-    options:["粉末","茶包","葉片"]
+    options:["粉末","茶包","葉片","甜點","用品"]
   },
   {type:"咖啡因",
     options:["有咖啡因","無咖啡因"]
@@ -25,15 +29,57 @@ const sort =[
   "上架舊至新"
 ]
 const products = [
-  { id: 1, name: 'Green Tea', description: 'Fresh leaves with a light, smooth flavor.', price: '$12.99' },
-  { id: 2, name: 'Black Tea', description: 'Bold and rich, perfect for a morning boost.', price: '$10.99' },
-  { id: 3, name: 'Oolong', description: 'Balanced and aromatic for a relaxing cup.', price: '$13.99' },
+  { id: 0, 
+    name: "夜月幽焰茶",
+    image:product0,
+    filter:["盒裝","提神","聯名特品"],
+    description: "冥火淬焙、亙古不熄", 
+    price: '$12.99' },
+  {
+    id:1,
+    name:"千鶴幽青茶",
+    image:product1,
+    filter:["盒裝","養生","聯名特品"],
+    description: "幽山長遠、林霧恆存", 
+    price: '$12.99' 
+  },
+  {
+    id:2,
+    name:"千鶴幽青茶",
+    image:product2,
+    filter:["罐裝","養生","聯名特品"],
+    description: "幽山長遠、林霧恆存", 
+    price: '$12.99' 
+  }
 ];
 
 
 export default function Products() {
   const[isHovered,setIsHovered]=useState(false);
   const[isOpen,setItOpen]=useState(false);
+  const[selected,setSelected]=useState([]);
+  const filterToggle =(opt)=>{
+    setSelected((previous)=>{
+      return previous.includes(opt)?
+      previous.filter((selOpt)=>{
+        return selOpt!==opt;
+      })
+      :
+      [...previous,opt];//...previous等同於previous.concat(opt)
+    })
+  };
+  const filtered =
+    selected.length===0?
+    products
+    :
+    products.filter((p)=>{
+      return selected.every(
+        (tag)=>{
+          return p.filter.includes(tag);
+        }
+      )
+    });
+  ;
   return (
     <div className="tab-page container-fluid p-0">
       <div id="BG_products" className='py-4'>
@@ -53,7 +99,9 @@ export default function Products() {
                   <ul className="dropdown-menu">
                     {item.options.map((option)=>(
                       <li key={option} className="dropdown-item">
-                        <input id={`fliter-${item.type}-${option}`} type="checkbox"/>
+                        <input id={`fliter-${item.type}-${option}`} type="checkbox"
+                        checked={selected.includes(option)}
+                        onChange={()=>{return filterToggle(option)}}/>
                         <label for={`fliter-${item.type}-${option}`}>{option}</label>
                       </li>
                     ))}
@@ -83,11 +131,11 @@ export default function Products() {
               </div>
             </div>
             <div id="productsShow">
-              {products.map((product) => (
+              {filtered.map((product) => (
               <div key={product.id} className="card">
                   <img className="card-image-top" src={product.image} alt={product.name}/>
                   <div className="card-body">
-                    <h3>{product.name}</h3>
+                    <h3>{product.name}<hr/></h3>
                     <p>{product.description}</p>
                     <span className="product-price">{product.price}</span>
                   </div>

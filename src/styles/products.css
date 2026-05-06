@@ -75,7 +75,33 @@ border: 2px solid var(--darkColor);
 #dpFilter button:hover,#sortFilter i:hover{
   text-shadow: 0 0 2px var(--darkColor);
 }
+#productsShow{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
 #productsShow .card{
-  background: transparent;
-  
+  background: linear-gradient(to bottom,var(--darkColor),var(--lightColor) 99%);
+  width: 20rem;
+  aspect-ratio: 5/6;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+}
+#productsShow .card:hover{
+  background: linear-gradient(to top,var(--darkColor) 10%,var(--lightColor) 60%);
+  color: var(--lightColor);
+  transform: translateY(-0.5rem);
+  transition: 0.5s;
+  filter: drop-shadow(0 10px 10px black);
+}
+#productsShow .card{
+  background: linear-gradient(to bottom,var(--darkColor),var(--lightColor) 99%);
+  width: 20rem;
+  aspect-ratio: 5/6;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
 }
