@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Hina+Mincho&family=LXGW+WenKai+TC&family=Noto+Serif+TC:wght@200..900&family=Shippori+Mincho+B1&display=swap");
-body,#root{
-  overflow-x: hidden;
-}
+
 :root {
   --darkColor: #43453c;
   --lightColor: #d0d9be;
@@ -10,7 +8,6 @@ body,#root{
 .tab-content .tab-page{
   margin-top: calc(var(--navHeight));
   min-height: 100vh;
-  min-height: 100dvh;
 }
 #toTop{
   position:fixed;
