@@ -185,7 +185,7 @@ label.graphy {
     top: 5.5rem;
     display: flex;
     flex-direction: column;
-    left: 100vw;
+    transform: translateX(100%);
     background: var(--lightColor);
     transition-duration: 0.5s;
     height: 100vh;
@@ -202,9 +202,18 @@ label.graphy {
     transform: rotate(-45deg);
   }
   #rwdNav:checked ~ #navLinks {
-    left: 0;
+    transform: translateX(0);
   }
   .nav-link:active ~ #navLinks {
-    left: 100vw;
+    transform: translateX(100%);
+  }
+  footer .contactInfo {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: center;
+    width: 100%;
+  }
+  footer .contactInfo > div {
+    width: 80vw !important;  /* 覆蓋 inline 的 15vw */
   }
 }
