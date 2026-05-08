@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowserRouter} from 'react-router-dom';
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -8,16 +9,12 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-if ('scrollRestoration' in window.history) {
-  window.history.scrollRestoration = 'manual';
-}
-window.scrollTo(0, 0);
-sessionStorage.clear(); 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </React.StrictMode>,
 );
 

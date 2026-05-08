@@ -5,27 +5,37 @@ import Products from "./tabPages/Products";
 import Contact from "./tabPages/Contact";
 import News from "./tabPages/News";
 import History from "./tabPages/History";
+import ProductDetail from "./tabPages/ProductsDetail";
 import "./material/graphy";
 import "./material/tools";
 import React, { useState ,useEffect} from "react";
-import { tab } from "@testing-library/user-event/dist/tab";
+import {Routes,Route,useLocation,useNavigate} from "react-router-dom";
 
 const navItems=[
   {
+    label:"首頁",
+    tabName:"home",
+    element:<Home/>
+  },
+  {
     label:"資訊消息",
-    tabName:"news"
+    tabName:"news",
+    element: <News/>
   },
   {
     label:"特色產品",
-    tabName:"products"
+    tabName:"products",
+    element:<Products/>
   },
   {
     label:"門市據點",
-    tabName:"contact"
+    tabName:"contact",
+    element:<Contact/>
   },
   {
     label:"經營歷史",
-    tabName:"history"
+    tabName:"history",
+    element:<History/>
   },
 ];
 const socialLinks=[
@@ -81,26 +91,12 @@ const contactInfo=[
   }
 ]
 function App() {
-  const [activeTab, setActiveTab] = useState("home");
-  const rwdNavCtrl = (tabName) => {
-    setActiveTab(tabName);
-    document.getElementById("rwdNav").checked = false;
-  };
-  const renderContent = () => {
-    switch (activeTab) {
-      case "home":
-        return <Home />;
-      case "news":
-        return <News />;
-      case "history":
-        return <History />;
-      case "products":
-        return <Products />;
-      case "contact":
-        return <Contact />;
-      default:
-        return <News />;
-    }
+  const navigate=useNavigate();
+  const location=useLocation();
+  const isHome=location.pathname==="/"||location.pathname==="/home";
+  const rwdNavCtrl=(tabName)=>{
+    navigate(`/${tabName}`);
+    document.getElementById("rwdNav").checked=false;
   };
   return (
     <div className="App" style={{display:"flex", flexDirection:"column", minHeight:"100vh"}}>
@@ -109,7 +105,10 @@ function App() {
       >
         ︿<br/>TOP
       </button>
-      <nav style={activeTab==="home"?{background: "rgba(208, 217, 190, 0.8)"}:{background:"var(--lightColor)"}}>
+      <nav style={isHome?
+        {background:"rgba(208,217,190,0.8)"}
+        : 
+        {background:"var(--lightColor)"}}>
         <div className="d-flex flex-row nav" >
           <a
             className="navbar-brand"
@@ -119,7 +118,7 @@ function App() {
             <img id="logo" src={logo}></img>
           </a>
           <input type="checkbox" id="rwdNav" />
-          <label for="rwdNav" className="graphy">
+          <label htmlFor="rwdNav" className="graphy">
             <div className="line"></div>
           </label>
           <ul
@@ -140,7 +139,15 @@ function App() {
           </ul>
         </div>
       </nav>
-      <div className="tab-content">{renderContent()}</div>
+      <div className="tab-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {navItems.map((item) => (
+            <Route key={item.tabName} path={`/${item.tabName}`} element={item.element} />
+          ))}
+          <Route path="/products/:id" element={<ProductDetail />} />
+        </Routes>
+      </div>
       <footer className="text-center py-1" style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
         <div className="socialLinks" style={{marginTop:"2rem"}}>
             {socialLinks.map((link) => (

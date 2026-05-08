@@ -4,6 +4,7 @@ import FeatureCarousel from '../components/featureCarousel/featureCarousel';
 import product0 from"../material/products/products_0.png";
 import product1 from"../material/products/products_1.png";
 import product2 from"../material/products/products_2.png";
+import { useNavigate } from 'react-router-dom';
 
 const filter=[
   {type:"包裝",
@@ -55,6 +56,7 @@ const products = [
 
 
 export default function Products() {
+  const navigate=useNavigate();
   const[isHovered,setIsHovered]=useState(false);
   const[isOpen,setItOpen]=useState(false);
   const[selected,setSelected]=useState([]);
@@ -132,7 +134,7 @@ export default function Products() {
             </div>
             <div id="productsShow">
               {filtered.map((product) => (
-              <div key={product.id} className="card">
+              <div key={product.id} className="card" onClick={() => navigate(`/products/${product.id}`)}>
                   <img className="card-image-top" src={product.image} alt={product.name}/>
                   <div className="card-body">
                     <h3>{product.name}<hr/></h3>
