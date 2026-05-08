@@ -207,4 +207,13 @@ label.graphy {
   .nav-link:active ~ #navLinks {
     transform: translateX(100%);
   }
+  footer .contactInfo {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: center;
+    width: 100%;
+  }
+  footer .contactInfo > div {
+    width: 80vw !important;  /* 覆蓋 inline 的 15vw */
+  }
 }
