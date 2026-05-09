@@ -1,0 +1,103 @@
+.products-page {
+  min-height: 100%;
+}
+button{
+  background: transparent;
+  border: none;
+}
+#BG_productDetail{
+  width: 100%;
+  height: calc(100vh - var(--navHeight));
+  background: linear-gradient(to right,transparent,var(--lightColor)5%,var(--lightColor)95%,transparent),
+  linear-gradient(var(--darkColor),var(--darkColor)),
+  url("../material/242.jpg") center/cover repeat,
+  var(--lightColor);
+  background-blend-mode: normal,screen,multiply,normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#content_productDetail{
+    width: min(90%,1100px);
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1.4fr;
+    gap:3rem;
+    align-items:center;
+}
+#productCarousel{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#productCarousel img{
+    width:100%;
+    max-width: 24rem;
+    object-fit:contain;
+    filter: drop-shadow(0 6px 10px var(--darkColor));
+}
+#productInfo{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    color:var(--darkColor);
+    font-family: "LXGW Wenkai TC",sans-serif;
+}
+#productInfo h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--darkColor);
+  border-bottom: 1px dashed var(--darkColor);
+  padding-bottom: 0.75rem;
+}
+#productInfo p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.productActions{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.quantityCtrl{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid var(--darkColor);
+    border-radius:6px;
+    overflow:hidden;
+}
+.quantityCtrl button,
+.quantityCtrl p{
+width: 2.75rem;
+height: 2.75rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.productActions>button{
+    background:var(--darkColor);
+    color:var(--lightColor);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+}
+@media screen and (max-width: 768px) {
+  #content_productDetail {
+    grid-template-columns: 1fr;
+    width: 88%;
+    gap: 2rem;
+  }
+
+  #productInfo {
+    text-align: center;
+    align-items: center;
+  }
+
+  .productActions {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+

@@ -5,7 +5,7 @@ import Products from "./tabPages/Products";
 import Contact from "./tabPages/Contact";
 import News from "./tabPages/News";
 import History from "./tabPages/History";
-import ProductDetail from "./tabPages/ProductsDetail";
+import ProductDetail from "./tabPages/ProductDetail";
 import "./material/graphy";
 import "./material/tools";
 import React, { useState ,useEffect} from "react";
