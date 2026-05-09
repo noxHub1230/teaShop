@@ -88,7 +88,7 @@ export default function Products() {
                   <img className="card-image-top" src={product.image} alt={product.name}/>
                   <div className="card-body">
                     <h3>{product.name}<hr/></h3>
-                    <p>{product.description}</p>
+                    <p>{product.subtitle}</p>
                     <span className="product-price">{product.price}</span>
                   </div>
               </div>
