@@ -36,6 +36,7 @@ a {
 }
 footer {
   width: 100%;
+  box-sizing: border-box;
   z-index: 2000;
   background-color: black;
   color: var(--lightColor);
@@ -212,8 +213,9 @@ label.graphy {
     gap: 2rem !important;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
   }
-  footer .contactInfo > div {
-    width: 80vw !important;  /* 覆蓋 inline 的 15vw */
+  footer .contactInfo > section {
+    width: min(80vw, 24rem) !important;
   }
 }

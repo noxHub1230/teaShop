@@ -127,19 +127,19 @@ function App() {
           >
             {navItems.map((item) => (
               <li className="nav-item" key={item.tabName}>
-                <a
+                <button
                   className="nav-link"
                   onClick={() => rwdNavCtrl(item.tabName)}
                   data-bs-toggle="tab"
                 >
                   {item.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
         </div>
       </nav>
-      <div className="tab-content">
+      <main className="tab-content">
         <Routes>
           <Route path="/" element={<Home />} />
           {navItems.map((item) => (
@@ -147,7 +147,7 @@ function App() {
           ))}
           <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>
-      </div>
+      </main>
       <footer className="text-center py-1" style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
         <div className="socialLinks" style={{marginTop:"2rem"}}>
             {socialLinks.map((link) => (
@@ -170,7 +170,7 @@ function App() {
         </div>
         <div className="contactInfo" style={{marginTop:"2rem",textAlign:"center",display:"flex", flexDirection:"row",gap:"10rem"}}>
           {contactInfo.map((group,index)=>(
-            <div key={index} style={{width:"15vw",flexWrap:"wrap",display:"flex", flexDirection:"column", alignItems:"center"}}>
+            <section key={index} style={{width:"15vw",flexWrap:"wrap",display:"flex", flexDirection:"column", alignItems:"center"}}>
               <h5>{group.way}</h5>
               <hr style={{width:"100%"}}/>
               {group.infos.map((item,i)=>item.tabName?(
@@ -191,7 +191,7 @@ function App() {
                   {item.text}
                 </p>
               ))}
-            </div>
+            </section>
           ))}
         </div>
       </footer>
