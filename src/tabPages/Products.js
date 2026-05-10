@@ -10,6 +10,7 @@ export default function Products() {
   const[isHovered,setIsHovered]=useState(false);
   const[isOpen,setItOpen]=useState(false);
   const[selected,setSelected]=useState([]);
+  const[sortType,setSortType]=useState("");
   const filterToggle =(opt)=>{
     setSelected((previous)=>{
       return previous.includes(opt)?
@@ -32,6 +33,27 @@ export default function Products() {
       )
     });
   ;
+
+  
+  const sortedProducts = [...filtered].sort((a, b) => {
+  switch (sortType) {
+    case "價格高至低":
+      return b.price - a.price;
+
+    case "價格低至高":
+      return a.price - b.price;
+
+    case "上架新至舊":
+      return b.id - a.id;
+
+    case "上架舊至新":
+      return a.id - b.id;
+
+    default:
+      return 0;
+  }
+});
+
   return (
     <div className="tab-page container-fluid p-0">
       <div id="BG_products" className='py-4'>
@@ -73,8 +95,10 @@ export default function Products() {
                   <ul className="dropdown-menu">
                     {sort.map((type)=>(
                     <li className="dropdown-items form-check" key={type}>
-                      <input className="form-check-input" id={`sort-${type}`} type="radio" name="sortFilter"/>
-                      <label className="form-check-label" for={`sort-${type}`}>{type}</label>
+                      <input className="form-check-input" id={`sort-${type}`} type="radio" name="sortFilter"
+                      checked={selected===type}
+                      onChange={()=>setSortType(type)}/>
+                      <label className="form-check-label" htmlFor={`sort-${type}`}>{type}</label>
                     </li>
                     ))
                     }
@@ -83,13 +107,13 @@ export default function Products() {
               </div>
             </div>
             <div id="productsShow">
-              {filtered.map((product) => (
+              {sortedProducts.map((product) => (
               <div key={product.id} className="card" onClick={() => navigate(`/products/${product.id}`)}>
                   <img className="card-image-top" src={product.image} alt={product.name}/>
                   <div className="card-body">
                     <h3>{product.name}<hr/></h3>
                     <p>{product.subtitle}</p>
-                    <span className="product-price">{product.price}</span>
+                    <span className="product-price">{product.price}元</span>
                   </div>
               </div>
               ))}
