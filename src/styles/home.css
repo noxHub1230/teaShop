@@ -19,7 +19,7 @@
   text-anchor: middle;
   color: var(--lightColor);
   font-size: 5rem;
-  font-family: "Hina Mincho", serif;
+  font-family: "Shippori Mincho B1", serif;
   white-space: nowrap;
   /* animation:
     fadeInb 1s forwards,
@@ -77,7 +77,7 @@
   font-size: 1.25rem;
 }
 #pickedNews_home h3{
-  font-family: "Hina Mincho";
+  font-family: "Shippori Mincho B1";
   font-weight: bold;;
   color: var(--darkColor);  
 }
@@ -162,7 +162,7 @@
   text-shadow:
     0 0 2rem black,
     0 0 1rem black;
-  font-family: "Hina Mincho", serif;
+  font-family: "Shippori Mincho B1", serif;
   font-size: 3rem;
 }
 .HShome_home h2::before {
