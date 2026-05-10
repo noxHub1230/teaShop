@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/productDetail.css";
 import { useParams } from 'react-router-dom';
+import ReactMarkdown from "react-markdown";
 import { products } from"../data/data_products";
+import { gsap, ScrollTrigger } from "./gsapSetup";
 
 
 export default function ProductDetail() {
@@ -27,6 +29,25 @@ export default function ProductDetail() {
   useEffect(()=>{
     setPickedImage(productImages[0]);
   },[product]);
+  useEffect(() => {
+    const ani = gsap.fromTo(
+      ".productIntroImg_pD",
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, 
+        scrollTrigger:{
+          trigger:"#productOperate",
+          start: "bottom 60%",  
+          end:"bottom top",
+          scrub:true
+        }
+      }
+    );
+    return()=>{
+      if(ani.scrollTrigger){ani.scrollTrigger.kill();}
+      ani.kill();
+    };
+  }, [product]);
+
 
   if (!product) {
   return (
@@ -41,43 +62,61 @@ export default function ProductDetail() {
     <div className="tab-page container-fluid p-0">
       <div id="BG_productDetail" className='py-4'>
         <div id="content_productDetail">
-          <div id="productCarousel">
-            <div id="nav_productCarousel">
-              <button className="carouselArrow_pD"
-               type="button"
-               onClick={pickPreviousImage}>↑</button>
-              <div className="thumbList_pD">
-                {productImages.map((image,index)=>(
-                  <button key={image}
-                  type="button"
-                  className={`thumb_pD ${image === pickedImage ? "thumb_pD_active" : ""}`}
-                  onClick={()=>setPickedImage(image)}
-                  style={{backgroundImage:`url(${image})`}}
-                  aria-label={`查看商品圖片 ${index + 1}`}>
-                  </button>
-                ))}
+          <div id="productOperate">
+            <div id="productCarousel">
+              <div id="nav_productCarousel">
+                <button className="carouselArrow_pD pre"
+                type="button"
+                onClick={pickPreviousImage}>
+                  <i className="bi bi-arrow-up-short"></i>
+                </button>
+                <div className="thumbList_pD">
+                  {productImages.map((image,index)=>(
+                    <button key={image}
+                    type="button"
+                    className={`thumb_pD ${image === pickedImage ? "thumb_pD_active" : ""}`}
+                    onClick={()=>setPickedImage(image)}
+                    style={{backgroundImage:`url(${image})`}}
+                    aria-label={`查看商品圖片 ${index + 1}`}>
+                    </button>
+                  ))}
+                </div>
+                <button className="carouselArrow_pD nxt"
+                type="button"
+                onClick={pickNextImage}>
+                  <i className="bi bi-arrow-down-short"></i>
+                </button>
               </div>
-              <button className="carouselArrow_pD"
-               type="button"
-               onClick={pickNextImage}>↓</button>
+              <div id="pickedImg_productCarousel"
+              style={{backgroundImage:`url(${pickedImage})`}}></div>
             </div>
-            <div id="pickedImg_productCarousel"
-            style={{backgroundImage:`url(${pickedImage})`}}></div>
-          </div>
-          <div id="productInfo">
-            <h1>{product.name}</h1>
-            <p>{product.subtitle}</p>
-            <span>{product.price}</span>
-            <div className="productActions">
-              <div className="quantityCtrl">
-                <button onClick={()=>setQuantity((q)=>Math.max(1,q-1))}>-</button>
-                <p>
-                {quantity}
-                </p>
-                <button onClick={()=>setQuantity(q=>q+1)}>+</button>
+            <div id="productInfo">
+              <h1>{product.name}</h1>
+              <p>{product.subtitle}</p>
+              <span>{product.price}</span>
+              <div className="productActions">
+                <div className="quantityCtrl">
+                  <button onClick={()=>setQuantity((q)=>Math.max(1,q-1))}>
+                    <i className="bi bi-dash"></i>
+                  </button>
+                  <p>
+                  {quantity}
+                  </p>
+                  <button onClick={()=>setQuantity(q=>q+1)}>
+                    <i className="bi bi-plus"></i>
+                  </button>
+                </div>
+                <button>加入購物車</button>
+                {/* 購物車的懸浮泡泡預計會寫在App.js裡 */}
               </div>
-              <button>加入購物車</button>
-              {/* 購物車的懸浮泡泡預計會寫在App.js裡 */}
+            </div>
+          </div>
+          <div id="productIntro">
+            <div className="productIntro_pD pIpD1">
+              <div className="productIntroText_pD"><ReactMarkdown>{product.description}</ReactMarkdown></div>
+              <div className="productIntroImg_pD"></div>
+            </div>
+            <div className="productIntro_pD pIpD2">
             </div>
           </div>
         </div>

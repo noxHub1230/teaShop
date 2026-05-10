@@ -7,7 +7,8 @@ button{
 }
 #BG_productDetail{
   width: 100%;
-  height: calc(100vh - var(--navHeight));
+  height: auto;
+  min-height: calc(100vh - var(--navHeight));
   background: linear-gradient(to right,transparent,var(--lightColor)5%,var(--lightColor)95%,transparent),
   linear-gradient(var(--darkColor),var(--darkColor)),
   url("../material/242.jpg") center/cover repeat,
@@ -18,16 +19,21 @@ button{
   align-items: center;
 }
 #content_productDetail{
-    width: min(90%,1100px);
+  width: min(90%,1100px);
+  display: flex;
+  flex-direction: column;
+  gap:3rem;
+}
+#productOperate{
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1.4fr 1fr;
     gap:3rem;
     align-items:center;
 }
 #productCarousel{
     display:grid;
-    grid-template-columns: 6rem minmax(18rem,1fr);
+    grid-template-columns: 0.3fr 1fr;
     gap:1.5rem;
     align-items: center;
     width: 100%;
@@ -51,9 +57,26 @@ button{
   width: 3.75rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background: var(--lightColor);
-  color: var(--darkColor);
+  background: var(--darkColor);
+  color: var(--lightColor);
   font-size: 1.5rem;
+  opacity: 0.25;
+}
+.carouselArrow_pD.pre{
+  transform: translateY(2rem);
+}
+.carouselArrow_pD.nxt{
+  transform: translateY(-2rem);
+}
+.carouselArrow_pD:hover{
+  opacity: 1;
+  transition: 0.2s;
+}
+.carouselArrow_pD.pre:hover{
+  transform: translateY(1.5rem);
+}
+.carouselArrow_pD.nxt:hover{
+  transform: translateY(-1.5rem);
 }
 .thumb_pD{
   width: 100%;
@@ -64,14 +87,13 @@ button{
   cursor:pointer;
 }
 .thumb_pD_active{
-  box-shadow: 0 0 0 2px var(--darkColor);
+  opacity: 0.6;
 }
 #pickedImg_productCarousel{
     width:100%;
     max-width: 36rem;
     aspect-ratio: 1/1;
     justify-self: center;
-    filter: drop-shadow(0 6px 10px var(--darkColor));
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -117,17 +139,72 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
+.quantityCtrl i{
+  scale: 1.5;
+}
+.quantityCtrl i:hover{
+scale: 1.25;
+transform: translateY(-2px);
+transition: 0.5s;
+text-shadow: 0 0 3px var(--darkColor);
+}
 .productActions>button{
     background:var(--darkColor);
     color:var(--lightColor);
     padding: 0.75rem 1.5rem;
     border-radius: 6px;
 }
+#productIntro{
+    width: 100%;
+   display:flex;
+   flex-direction: column;
+}
+.productIntro_pD{
+  width: 100%;
+}
+.pIpD1{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(14rem, 0.75fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+.productIntro_pD blockquote {
+  margin: 1rem 0 2rem;
+  padding: 0.75rem 0 0.75rem 1.25rem;
+  border-left: 3px solid var(--darkColor);
+  color: var(--darkColor);
+  font-style: italic;
+}
+
+.productIntro_pD blockquote p {
+  margin: 0;
+  line-height: 1.9;
+}
+
+.productIntroImg_pD {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  max-width: none;
+  background: url(https://static.vecteezy.com/system/resources/thumbnails/068/252/520/small/enigmatic-forest-under-moonlight-with-eerie-shadows-and-tranquil-atmosphere-at-night-in-deep-blue-hues-photo.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+
+
 @media screen and (max-width: 768px) {
-  #content_productDetail {
-    grid-template-columns: 1fr;
+  #content_productDetail{
     width: 88%;
     gap: 2rem;
+  }
+  #productOperate {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 2rem;
+    align-items: stretch;
   }
   #productInfo {
     text-align: center;
@@ -141,28 +218,109 @@ justify-content: center;
   #productCarousel{
     grid-template-columns: 1fr;
     gap:1rem;
+    width: 100%;
   }
   #nav_productCarousel {
     order: 2;
+    width: 100%;
     height: auto;
+    display: grid;
     grid-template-rows: none;
     grid-template-columns: 2.75rem 1fr 2.75rem;
+    gap: 0.75rem;
+    align-items: center;
   }
 
-  .thumbList_productCarousel {
+  .carouselArrow_pD.pre {
+    transform: translateX(6rem);
+  }
+
+  .carouselArrow_pD.nxt {
+    transform: translateX(-6rem);
+  }
+
+  .carouselArrow_pD.pre:hover {
+    transform: translateX(6rem);
+  }
+
+  .carouselArrow_pD.nxt:hover {
+    transform: translateX(-6rem);
+  }
+
+  .carouselArrow_pD i {
+    display: inline-block;
+    transform: rotateZ(-90deg);
+  }
+
+  .thumbList_pD {
     flex-direction: row;
     max-height: none;
     overflow-x: auto;
+    min-width: 0;
+    padding-bottom: 0.25rem;
+    justify-content: center;
   }
 
-  .thumb_productCarousel {
+
+  .thumb_pD {
     width: 4.5rem;
     flex: 0 0 4.5rem;
   }
 
   #pickedImg_productCarousel {
     order: 1;
+    width: 100%;
     max-width: 22rem;
+    aspect-ratio: 1/1;
+    justify-self: center;
   }
+  #productIntro {
+  width: 100%;
+  gap: 2rem;
+}
+
+.pIpD1 {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.productIntroText_pD {
+  min-width: 0;
+  text-align: left;
+  line-height: 1.85;
+}
+
+.productIntroImg_pD {
+  width: 100%;
+  height: auto;
+  min-height: 14rem;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+}
+.productIntroImg_pD {
+  order: -1;
+}
+.productIntroText_pD h2 {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+.productIntroText_pD h3 {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.productIntroText_pD p {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.productIntroText_pD blockquote {
+  margin: 1rem 0 1.75rem;
+  padding: 0.75rem 0 0.75rem 1rem;
+}
+
 }
 

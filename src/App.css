@@ -5,6 +5,12 @@
   --lightColor: #d0d9be;
   --navHeight: 5.5rem;
 }
+h1,h2,h3{
+  font-family: "Shippori Mincho B1";
+}
+span,p,li,button{
+ font-family: "LXGW WenKai TC";
+}
 .tab-content .tab-page{
   margin-top: calc(var(--navHeight));
   min-height: 100vh;

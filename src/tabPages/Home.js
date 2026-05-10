@@ -1,13 +1,11 @@
 import React, {useEffect} from "react";
 import "../styles/home.css";
 import { autoBreak } from "../material/tools";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "./gsapSetup";
 import { waveline, waveline_alt } from "../material/graphy";
 import { HSContent } from "../data/data_home";
 import { manageNews, eventNews } from "../data/data_news";
 import FeatureCarousel from "../components/featureCarousel/featureCarousel";
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   useEffect(() => {
