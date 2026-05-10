@@ -26,15 +26,55 @@ button{
     align-items:center;
 }
 #productCarousel{
-    display:flex;
-    justify-content: center;
+    display:grid;
+    grid-template-columns: 6rem minmax(18rem,1fr);
+    gap:1.5rem;
     align-items: center;
+    width: 100%;
 }
-#productCarousel img{
+#nav_productCarousel{
+  display: grid;
+  grid-template-rows:3rem 1fr 3rem;
+  align-items:center;
+  justify-items: center;
+  height: 36rem;
+}
+.thumbList_pD{
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-height: 28rem;
+  overflow: hidden;
+}
+.carouselArrow_pD{
+  width: 3.75rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: var(--lightColor);
+  color: var(--darkColor);
+  font-size: 1.5rem;
+}
+.thumb_pD{
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor:pointer;
+}
+.thumb_pD_active{
+  box-shadow: 0 0 0 2px var(--darkColor);
+}
+#pickedImg_productCarousel{
     width:100%;
-    max-width: 24rem;
-    object-fit:contain;
+    max-width: 36rem;
+    aspect-ratio: 1/1;
+    justify-self: center;
     filter: drop-shadow(0 6px 10px var(--darkColor));
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #productInfo{
     display: flex;
@@ -89,7 +129,6 @@ justify-content: center;
     width: 88%;
     gap: 2rem;
   }
-
   #productInfo {
     text-align: center;
     align-items: center;
@@ -98,6 +137,32 @@ justify-content: center;
   .productActions {
     flex-direction: column;
     justify-content: center;
+  }
+  #productCarousel{
+    grid-template-columns: 1fr;
+    gap:1rem;
+  }
+  #nav_productCarousel {
+    order: 2;
+    height: auto;
+    grid-template-rows: none;
+    grid-template-columns: 2.75rem 1fr 2.75rem;
+  }
+
+  .thumbList_productCarousel {
+    flex-direction: row;
+    max-height: none;
+    overflow-x: auto;
+  }
+
+  .thumb_productCarousel {
+    width: 4.5rem;
+    flex: 0 0 4.5rem;
+  }
+
+  #pickedImg_productCarousel {
+    order: 1;
+    max-width: 22rem;
   }
 }
 

@@ -95,6 +95,7 @@ width: 80%;
   transform: translateY(-0.25rem);
   transition: 0.5s;
   filter:drop-shadow(0 3px 5px var(--darkColor));
+  cursor:pointer;
 }
 #productsShow .card{
   background: linear-gradient(to bottom,var(--darkColor),var(--lightColor) 99%);

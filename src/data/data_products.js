@@ -1,12 +1,20 @@
 import product0 from"../material/products/products_0.png";
 import product1 from"../material/products/products_1.png";
 import product2 from"../material/products/products_2.png";
-
+import product0_1 from "../material/products/products_0_1.png";
+import product0_2 from "../material/products/products_0_2.png";
+import product1alt from"../material/products/products_1alt.png";
+import product1_1 from "../material/products/products_1_1.png";
+import product1_2 from "../material/products/products_1_2.png";
+import product2_1 from "../material/products/products_2_1.png";
+import product2_2 from "../material/products/products_2_2.png"; 
 export const products = [
   { id: 0, 
     name: "夜月幽焰茶",
     image:product0,
-    filter:["盒裝","提神","聯名特品"],
+    packages:[],
+    detailImages:[product0_1,product0_2],
+    filter:["平素","提神","聯名特品"],
     subtitle: "冥火淬焙、亙古不熄", 
     description:`第一層：靜謐之月（外觀與初響）
                   這款茶起源於遠古的靜謐傳說。深邃如夜的茶盒中，封存的是歲月的餘燼。當熱水注入，蜷縮的茶葉在杯中舒展開來，猶如暗夜中被月光點燃的古木。
@@ -46,7 +54,9 @@ export const products = [
     id:1,
     name:"千鶴幽青茶",
     image:product1,
-    filter:["盒裝","養生","聯名特品"],
+    packages:[product1alt],
+    detailImages:[product1_1,product1_2],
+    filter:["精緻","養生","聯名特品"],
     subtitle: "幽山長遠、林霧恆存", 
     description:`第一層：靜謐之月（外觀與初響）
                   這款茶起源於遠古的靜謐傳說。深邃如夜的茶盒中，封存的是歲月的餘燼。當熱水注入，蜷縮的茶葉在杯中舒展開來，猶如暗夜中被月光點燃的古木。
@@ -85,9 +95,11 @@ export const products = [
   },
   {
     id:2,
-    name:"千鶴幽青茶",
+    name:"綠茶",
     image:product2,
-    filter:["罐裝","養生","聯名特品"],
+    packages:[],
+    detailImages:[product2_1,product2_2],
+    filter:["平素","養生","聯名特品"],
     subtitle: "幽山長遠、林霧恆存", 
     description:`第一層：靜謐之月（外觀與初響）
                   這款茶起源於遠古的靜謐傳說。深邃如夜的茶盒中，封存的是歲月的餘燼。當熱水注入，蜷縮的茶葉在杯中舒展開來，猶如暗夜中被月光點燃的古木。
@@ -127,7 +139,7 @@ export const products = [
 ];
 export const filter=[
   {type:"包裝",
-    options:["罐裝","盒裝"]
+    options:["平素","精緻"]
   },
   {type:"功效",
     options:["助眠","提神","消化","養生"]
