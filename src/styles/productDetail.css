@@ -117,6 +117,10 @@ button{
   font-size: 1.1rem;
   line-height: 1.8;
 }
+#productInfo .badge{
+  background: var(--darkColor);
+  color: var(--lightColor);
+}
 .productActions{
     display: flex;
     align-items: center;

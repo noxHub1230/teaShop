@@ -93,6 +93,11 @@ export default function ProductDetail() {
             <div id="productInfo">
               <h1>{product.name}</h1>
               <p>{product.subtitle}</p>
+              <div style={{display:"flex",flexDirection:"row",gap:"10px"}}>
+              {product.filter.map((tag,index)=>(
+                <span className="badge">{tag}</span>
+              ))}
+              </div>
               <span>{product.price}</span>
               <div className="productActions">
                 <div className="quantityCtrl">
