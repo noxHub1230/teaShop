@@ -8,7 +8,7 @@
 h1,h2,h3{
   font-family: "Shippori Mincho B1";
 }
-span,p,li,button{
+span,p,li,button,Link{
  font-family: "LXGW WenKai TC";
 }
 .tab-content .tab-page{
@@ -32,10 +32,6 @@ span,p,li,button{
 #toTop:hover{
   opacity: 1;
   filter: drop-shadow(0 0 5px var(--lightColor));
-}
-h1,h2,h3{
-  font-family: "Shippori Mincho B1";
-  color:var(--darkColor);
 }
 a {
   cursor: pointer;

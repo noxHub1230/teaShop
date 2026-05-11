@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/productDetail.css";
-import { useParams } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import ReactMarkdown from "react-markdown";
 import { products } from"../data/data_products";
 import { gsap, ScrollTrigger } from "./gsapSetup";
+import { navItems } from "../data/data_basic";
 
 
 export default function ProductDetail() {
+  const productsPage=navItems.find((item)=>item.tabName==="products");
+  const productsPageLabel = productsPage ? productsPage.label : "Products";
+  
   const [quantity,setQuantity]=useState(1);
   const {id}=useParams();
   
@@ -62,6 +66,18 @@ export default function ProductDetail() {
     <div className="tab-page container-fluid p-0">
       <div id="BG_productDetail" className='py-4'>
         <div id="content_productDetail">
+          <div aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link className="breadcrumbLink" to="/products">
+                {productsPageLabel}</Link>
+              </li>
+              <li className="breadcrumb-item active"
+              aria-current="page">
+                {product.name}
+              </li>
+            </ol>
+          </div>
           <div id="productOperate">
             <div id="productCarousel">
               <div id="nav_productCarousel">

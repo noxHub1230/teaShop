@@ -10,34 +10,15 @@ import "./material/graphy";
 import "./material/tools";
 import React, { useState ,useEffect} from "react";
 import {Routes,Route,useLocation,useNavigate} from "react-router-dom";
+import {navItems} from "./data/data_basic";
 
-const navItems=[
-  {
-    label:"首頁",
-    tabName:"home",
-    element:<Home/>
-  },
-  {
-    label:"資訊消息",
-    tabName:"news",
-    element: <News/>
-  },
-  {
-    label:"特色產品",
-    tabName:"products",
-    element:<Products/>
-  },
-  {
-    label:"門市據點",
-    tabName:"contact",
-    element:<Contact/>
-  },
-  {
-    label:"經營歷史",
-    tabName:"history",
-    element:<History/>
-  },
-];
+const routeElements={
+  home:<Home/>,
+  news:<News/>,
+  products:<Products/>,
+  contact:<Contact/>,
+  history:<History/>,
+};
 const socialLinks=[
   {
     label:"Facebook",
@@ -125,7 +106,8 @@ function App() {
             id="navLinks"
             className="nav ms-auto align-self-center align-items-center"
           >
-            {navItems.map((item) => (
+            {navItems.filter((item)=>!item.hidden)
+            .map((item) => (
               <li className="nav-item" key={item.tabName}>
                 <button
                   className="nav-link"
@@ -143,7 +125,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {navItems.map((item) => (
-            <Route key={item.tabName} path={`/${item.tabName}`} element={item.element} />
+            <Route key={item.tabName} path={`/${item.tabName}`} element={routeElements[item.tabName]} />
           ))}
           <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>

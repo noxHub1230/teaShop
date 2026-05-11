@@ -1,3 +1,9 @@
+.breadcrumb{
+  font-size: 1.25rem;
+}
+.breadcrumbLink{
+  color: var(--darkColor);
+}
 .products-page {
   min-height: 100%;
 }
