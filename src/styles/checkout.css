@@ -1,0 +1,13 @@
+#BG_checkout{
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - var(--navHeight));
+  background: linear-gradient(to right,transparent,var(--lightColor)5%,var(--lightColor)95%,transparent),
+  linear-gradient(var(--darkColor),var(--darkColor)),
+  url("../material/242.jpg") center/cover repeat,
+  var(--lightColor);
+  background-blend-mode: normal,screen,multiply,normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
