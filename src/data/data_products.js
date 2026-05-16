@@ -107,7 +107,7 @@ export const products = [
     packages:[],
     detailImages:[product2_1,product2_2],
     filter:["平素","養生","聯名特品"],
-    subtitle: "幽山長遠、林霧恆存", 
+    subtitle: "晨露茵蘊、澀香迴盪", 
     description:`## 第一層：碧海微瀾 *（外觀與初響）*
 這款茶源自於清晨薄霧籠罩的翠綠山谷。
 精緻的茶罐中，封存的是春日最初的溫柔。
