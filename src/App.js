@@ -26,6 +26,9 @@ function App() {
   const navigate=useNavigate();
   const location=useLocation();
   const isHome=location.pathname==="/"||location.pathname==="/home";
+  useEffect(()=>{
+    window.scrollTo({top:0,left:0,behavior:"auto"});
+  },[location.pathname]);
   const rwdNavCtrl=(tabName)=>{
     navigate(`/${tabName}`);
     document.getElementById("rwdNav").checked=false;
