@@ -16,7 +16,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="BG_checkout tab-page container-fluid p-0">
+    <div id="BG_checkout" className="tab-page container-fluid p-0">
       <div id="content_cart">
         {cart.map(item => (
           <div key={item.id} className="cartItem">
