@@ -1,7 +1,7 @@
 #cartBubble{
   position:fixed;
   z-index: 2001;
-  bottom: 8rem;
+  bottom: 10rem;
   right: 4rem;
   width: 5rem;
   height: 5rem;
@@ -10,7 +10,7 @@
   color: var(--lightColor);
   opacity: 0.7;
   border: none;
-  font-family: "Shippori Mincho B1", serif;
+  font-size: 2rem;
 }
 #cartBubble:hover{
   opacity: 1;
