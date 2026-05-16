@@ -21,8 +21,13 @@ export default function Cart() {
         <div id="cartList">
             {cart.length === 0 ? (
             <>
-                <p>購物車是空的</p>
-                <Link to="/products">繼續選購</Link>
+            <div className="d-flex flex-column align-items-center gap-1">
+                <p>尚無商品</p>
+                <button class="btn_cko"
+                onClick={()=>navigate("/product")}>繼續選購</button>
+                <button class="btn_cko"
+                onClick={()=>navigate("/home")}>回到首頁</button>
+            </div>
             </>
             ) : (
             <>
