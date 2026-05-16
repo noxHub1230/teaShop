@@ -26,7 +26,7 @@ font-family: "LXGW WenKai TC";
   border:2px solid var(--darkColor);
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  justify-content: center;
 }
 #cartTable {
   width: 100%;
@@ -62,6 +62,10 @@ font-family: "LXGW WenKai TC";
 .btn_cko{
   border-radius: 10px;
   color: var(--lightColor);
-  background-color: var(--darkColor);
+  background: var(--darkColor);
   padding: 0.25rem;
+  font-family: "LXGW WenKai TC";
+}
+.btn_cko:hover{
+  opacity: 0.85;
 }
