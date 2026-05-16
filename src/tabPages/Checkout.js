@@ -17,9 +17,9 @@ export default function Cart() {
 
   return (
     <div id="BG_checkout" className="tab-page container-fluid p-0">
-      <div id="content_cart">
+      <div id="cartList">
         {cart.map(item => (
-          <div key={item.id} className="cartItem">
+          <div key={item.id} className="cartItem d-flex flex-row">
             <span>{item.name}</span>
             <span>x{item.quantity}</span>
             <span>{item.price * item.quantity} 元</span>

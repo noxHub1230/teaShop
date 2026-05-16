@@ -11,3 +11,9 @@
   flex-direction: column;
   align-items: center;
 }
+#cartList{
+  border:2px solid var(--darkColor);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
