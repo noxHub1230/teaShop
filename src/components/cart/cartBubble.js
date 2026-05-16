@@ -11,7 +11,7 @@ export default function CartBubble(){
 return(
       <button id="cartBubble"
       onClick={()=>{navigate("/checkout")}}
-      style={totalItems===0?{display:"hidden"}:{display:"inline-block"}}
+      style={totalItems===0?{display:"none"}:{display:"inline-block"}}
       >
         <i className="bi bi-cart4"></i>
         {totalItems>0&&(<span id="cartCount">{totalItems}</span>)}
