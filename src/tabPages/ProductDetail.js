@@ -117,7 +117,7 @@ export default function ProductDetail() {
                 <span className="badge">{tag}</span>
               ))}
               </div>
-              <span>{product.price}</span>
+              <span id="productPrice">{product.price}元</span>
               <div className="productActions">
                 <div className="quantityCtrl">
                   <button onClick={()=>setQuantity((q)=>Math.max(1,q-1))}>

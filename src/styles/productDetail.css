@@ -1,5 +1,5 @@
 .breadcrumb{
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 .breadcrumbLink{
   color: var(--darkColor);
@@ -126,6 +126,9 @@ button{
 #productInfo .badge{
   background: var(--darkColor);
   color: var(--lightColor);
+}
+#productPrice{
+  font-size: 2rem;
 }
 .productActions{
     display: flex;
