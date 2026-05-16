@@ -138,7 +138,7 @@ export default function ProductDetail() {
           </div>
           <div id="productIntro">
             <div className="productIntro_pD pIpD1">
-              <div className="productIntroText_pD"><ReactMarkdown>{product.description}</ReactMarkdown></div>
+              <div className="productIntroText_pD" style="white-space:pre-line;"><ReactMarkdown>{product.description}</ReactMarkdown></div>
               <div className="productIntroImg_pD" style={{backgroundImage:`url(${product.desImg[0]})`}}></div>
             </div>
             <div className="productIntro_pD pIpD2">
