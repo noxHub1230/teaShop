@@ -19,14 +19,6 @@ export function CartProvider({children}){
         })
     }
 
-    const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0);
-
-     return (
-    <cartContext.Provider value={{ cart, addToCart ,totalPrice, updateQuantity,removeItem}}>
-      {children}
-    </cartContext.Provider>
-  );
     const updateQuantity = (productId, newQuantity) => {
     setCart(prev =>
         prev.map(item =>
@@ -40,5 +32,14 @@ export function CartProvider({children}){
     const removeItem = (productId) => {
     setCart(prev => prev.filter(item => item.id !== productId));
     };
+
+    const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0);
+
+     return (
+    <cartContext.Provider value={{ cart, addToCart ,totalPrice, updateQuantity,removeItem}}>
+      {children}
+    </cartContext.Provider>
+  );
 };
 export const useCart = () => useContext(cartContext);
