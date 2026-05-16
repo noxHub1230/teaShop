@@ -20,7 +20,6 @@ export default function Cart() {
         <>
             {cart.map(item => (
             <div key={item.id} className="cartItem">
-                <img src={item.image} alt={item.name} />
                 <span>{item.name}</span>
                 <span>x{item.quantity}</span>
                 <span>{item.price * item.quantity} 元</span>
