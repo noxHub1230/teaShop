@@ -3,7 +3,7 @@ import { useCart } from "../components/cart/cart";
 import { useNavigate} from "react-router-dom";
 import "../styles/checkout.css"
 
-export default function Cart() {
+export default function Checkout() {
   const { cart, totalPrice,updateQuantity,removeItem } = useCart();
     const navigate=useNavigate();
 
