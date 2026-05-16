@@ -6,27 +6,30 @@ import "../styles/checkout.css"
 export default function Cart() {
   const { cart, totalPrice } = useCart();
 
-  if (cart.length === 0) {
-    return (
-      <div className="BG_checkout tab-page container-fluid p-0">
-        <p>購物車是空的</p>
-        <Link to="/products">繼續選購</Link>
-      </div>
-    );
-  }
 
   return (
     <div id="BG_checkout" className="tab-page container-fluid p-0">
+        <div style={{textAlign:"center"}}><h3>購買總覽<hr/></h3></div>
       <div id="cartList">
-        {cart.map(item => (
-          <div key={item.id} className="cartItem d-flex flex-row">
-            <span>{item.name}</span>
-            <span>x{item.quantity}</span>
-            <span>{item.price * item.quantity} 元</span>
-          </div>
-        ))}
+        {cart.length === 0 ? (
+        <>
+            <p>購物車是空的</p>
+            <Link to="/products">繼續選購</Link>
+        </>
+        ) : (
+        <>
+            {cart.map(item => (
+            <div key={item.id} className="cartItem">
+                <img src={item.image} alt={item.name} />
+                <span>{item.name}</span>
+                <span>x{item.quantity}</span>
+                <span>{item.price * item.quantity} 元</span>
+            </div>
+            ))}
+        </>
+        )}
         <div className="cartTotal">
-          合計：{totalPrice} 元
+            合計：{totalPrice} 元
         </div>
       </div>
     </div>
