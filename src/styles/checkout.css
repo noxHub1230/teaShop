@@ -47,3 +47,15 @@ font-family: "LXGW WenKai TC";
   font-size: 2rem;
   font-family: "LXGW WenKai TC";
 }
+
+.qtyCell {
+  text-align: center;
+}
+.qtyCell button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--darkColor);
+  font-size: 1rem;
+  padding: 0 0.25rem;
+}

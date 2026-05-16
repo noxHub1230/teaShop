@@ -4,8 +4,16 @@ import { Link } from "react-router-dom";
 import "../styles/checkout.css"
 
 export default function Cart() {
-  const { cart, totalPrice } = useCart();
+  const { cart, totalPrice,updateQuantity,removeItem } = useCart();
 
+    const handleDecrease = (item) => {
+    if (item.quantity - 1 === 0) {
+      const confirmed = window.confirm(`確定要移除「${item.name}」嗎？`);
+      if (confirmed) removeItem(item.id);
+    } else {
+      updateQuantity(item.id, item.quantity - 1);
+    }
+  };
 
   return (
     <div id="BG_checkout" className="tab-page container-fluid p-0">
