@@ -1,0 +1,18 @@
+#cartBubble{
+  position:fixed;
+  z-index: 2001;
+  bottom: 8rem;
+  right: 4rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background:radial-gradient(black,var(--darkColor));
+  color: var(--lightColor);
+  opacity: 0.7;
+  border: none;
+  font-family: "Shippori Mincho B1", serif;
+}
+#cartBubble:hover{
+  opacity: 1;
+  filter: drop-shadow(0 0 5px var(--lightColor));
+}

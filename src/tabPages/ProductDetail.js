@@ -5,9 +5,12 @@ import ReactMarkdown from "react-markdown";
 import { products } from"../data/data_products";
 import { gsap, ScrollTrigger } from "./gsapSetup";
 import { navItems } from "../data/data_basic";
+import {useCart} from "../components/cart/cart";
 
 
 export default function ProductDetail() {
+  const{addToCart}=useCart();
+
   const productsPage=navItems.find((item)=>item.tabName==="products");
   const productsPageLabel = productsPage ? productsPage.label : "Products";
   
@@ -127,7 +130,8 @@ export default function ProductDetail() {
                     <i className="bi bi-plus"></i>
                   </button>
                 </div>
-                <button>加入購物車</button>
+                <button
+                onClick={()=>addToCart(product,quantity)}>加入購物車</button>
                 {/* 購物車的懸浮泡泡預計會寫在App.js裡 */}
               </div>
             </div>
