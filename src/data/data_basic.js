@@ -77,35 +77,3 @@ export const contactInfo=[
     ]
   }
 ];
-const contactInfo=[
-  {
-    way:"聯繫方式",
-    infos:[
-    {text:"總公司：高藏州霞岐縣山田町下狛西作り道6"},
-    {text:"直營店：高藏州霞岐縣川茂町上通り1-2-3"},
-    {text:"電話：02-12345678"},
-    {text:"傳真：02-87654321"},
-    {text:"電子郵件：info@company.com"}
-    ]
-  },
-  {
-    way:"營業時間",
-    infos:[
-      {text:"週一至週五：9:00 - 18:00"},
-      {text:"週六：10:00 - 16:00"},
-      {text:"週日：休息"},
-      {text:"(特殊節假日營業時間另行公告)"},
-      {text:""}
-    ]
-  },
-  {
-    way:"導覽綱要",
-    infos:[
-      {text:"首頁",tabName:"home"},
-      {text:"資訊消息",tabName:"news"},
-      {text:"經營歷史",tabName:"history"},
-      {text:"特色產品",tabName:"products"},
-      {text:"門市據點",tabName:"contact"}
-    ]
-  }
-];
