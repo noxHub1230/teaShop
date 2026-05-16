@@ -8,7 +8,7 @@ export default function CartBubble(){
   const navigate=useNavigate();
   const totalItems=cart.reduce((sum,item)=>sum+item.quantity,0);
 return(
-      <button id="cartBubble" className="p-3"
+      <button id="cartBubble"
       onClick={()=>{navigate("/checkout")}}
       >
         <i className="bi bi-cart4"></i>
