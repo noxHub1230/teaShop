@@ -2,7 +2,7 @@
   position:fixed;
   z-index: 2001;
   bottom: 10rem;
-  right: 4rem;
+  right: 2rem;
   width: 5rem;
   height: 5rem;
   border-radius: 100%;
@@ -15,4 +15,15 @@
 #cartBubble:hover{
   opacity: 1;
   filter: drop-shadow(0 0 5px var(--lightColor));
+}
+.cartCount{
+    font-size: 1rem;
+    position: absolute;
+    top: -0.5rem;
+    background: radial-gradient(var(--lightColor) 55%, black 100%);
+    padding: 0.5rem;
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+    width: 2.5rem;
+    color: var(--darkColor);
 }

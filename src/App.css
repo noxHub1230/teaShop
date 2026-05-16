@@ -19,7 +19,7 @@ span,p,li,button,Link{
   position:fixed;
   z-index: 2001;
   bottom: 4rem;
-  right: 4rem;
+  right: 2rem;
   width: 5rem;
   height: 5rem;
   border-radius: 100%;
