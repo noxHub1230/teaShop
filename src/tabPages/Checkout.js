@@ -1,10 +1,11 @@
 import React from "react";
 import { useCart } from "../components/cart/cart";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import "../styles/checkout.css"
 
 export default function Cart() {
   const { cart, totalPrice,updateQuantity,removeItem } = useCart();
+    const navigate=useNavigate();
 
     const handleDecrease = (item) => {
     if (item.quantity - 1 === 0) {
@@ -23,9 +24,9 @@ export default function Cart() {
             <>
             <div className="d-flex flex-column align-items-center gap-1">
                 <p>尚無商品</p>
-                <button class="btn_cko"
-                onClick={()=>navigate("/product")}>繼續選購</button>
-                <button class="btn_cko"
+                <button className="btn_cko"
+                onClick={()=>navigate("/products")}>繼續選購</button>
+                <button className="btn_cko"
                 onClick={()=>navigate("/home")}>回到首頁</button>
             </div>
             </>
