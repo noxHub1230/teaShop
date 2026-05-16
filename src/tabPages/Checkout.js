@@ -40,7 +40,15 @@ export default function Cart() {
                     <tr key={item.id}>
                     <td>{item.name}</td>
                     <td>{item.price}</td>
-                    <td>{item.quantity}</td>
+                    <td className="qtyCell">
+                      <button onClick={() => handleDecrease(item)}>
+                        <i className="bi bi-dash"></i>
+                      </button>
+                      {item.quantity}
+                      <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                        <i className="bi bi-plus"></i>
+                      </button>
+                    </td>
                     <td>{item.price * item.quantity}</td>
                     </tr>
                 ))}
