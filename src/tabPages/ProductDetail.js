@@ -114,7 +114,7 @@ export default function ProductDetail() {
               <p>{product.subtitle}</p>
               <div style={{display:"flex",flexDirection:"row",gap:"10px"}}>
               {product.filter.map((tag,index)=>(
-                <span className="badge">{tag}</span>
+                <span key={index} className="badge">{tag}</span>
               ))}
               </div>
               <span id="productPrice">{product.price}元</span>
