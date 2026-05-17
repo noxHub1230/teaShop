@@ -2,6 +2,9 @@ import React from "react";
 import { useCart } from "../components/cart/cart";
 import { useNavigate} from "react-router-dom";
 import "../styles/checkout.css"
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import Receipt from "../components/receipt/receipt";
 
 export default function Checkout() {
   const { cart, totalPrice,updateQuantity,removeItem } = useCart();
@@ -14,6 +17,21 @@ export default function Checkout() {
     } else {
       updateQuantity(item.id, item.quantity - 1);
     }
+    };
+
+    const generatePDF = async () => {
+    const orderNumber = `GL-${Date.now()}`;
+    document.getElementById("receiptOrderNum").innerText = `訂單編號：${orderNumber}`;
+
+    const target = document.getElementById("receiptTarget");
+    const canvas = await html2canvas(target, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF();
+    const imgWidth = 170;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 20, 20, imgWidth, imgHeight);
+    pdf.save(`古林萃室_訂單_${orderNumber}.pdf`);
   };
 
   return (
@@ -66,6 +84,12 @@ export default function Checkout() {
         <div className="cartTotal">
             合計：{totalPrice} 元
         </div>
+        {cart.length > 0 && (
+          <button className="btn_cko" style={{ marginTop: "1rem" }} onClick={generatePDF}>
+            下載收據
+          </button>
+        )}
+        <Receipt cart={cart} totalPrice={totalPrice} />
     </div>
   );
 }
