@@ -45,7 +45,7 @@
   border-radius: 10px;
   color: var(--lightColor);
   background: var(--darkColor);
-  padding: 0.25rem;
+  padding: 0.5rem;
 }
 .btn_cko:hover{
   opacity: 0.85;

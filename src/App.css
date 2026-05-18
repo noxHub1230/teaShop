@@ -40,7 +40,7 @@ h1,h2,h3,h4,h5{
   font-family: "Shippori Mincho B1";
 }
 span,p,li,button,table,Link{
- font-family: "LXGW WenKai TC";
+ font-family: "LXGW WenKai TC"!important;
 }
 /*==============================================*/
 .tab-content .tab-page{
