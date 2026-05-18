@@ -3,6 +3,11 @@
 :root {
   --darkColor: #43453c;
   --lightColor: #d0d9be;
+  --darkColor-0: rgba(67, 69, 60, 0);   
+  --darkColor-70: rgba(67, 69, 60, 0.7);   
+  --darkColor-80: rgba(67, 69, 60, 0.8);   
+  --lightColor-90: rgba(208, 217, 190, 0.9); 
+
   --navHeight: 5.5rem;
 
   --fontSmall:1rem;
@@ -90,9 +95,9 @@ ul {
 .nav-item::before {
   content: "";
   background: linear-gradient(
-    #43453c,
-    rgba(67, 69, 60, 0.8) 60%,
-    rgba(67, 69, 60, 0)
+    var(--darkColor),
+    var(--darkColor-80) 60%,
+    var(--darkColor-0)
   );
   position: absolute;
   z-index: 0;
@@ -180,11 +185,11 @@ label.graphy {
     content: "";
     background: linear-gradient(
       90deg,
-      rgba(67, 69, 60, 0),
-      rgba(67, 69, 60, 0.8) 20%,
-      #43453c,
-      rgba(67, 69, 60, 0.8) 80%,
-      rgba(67, 69, 60, 0)
+      var(--darkColor-0),
+      var(--darkColor-80) 20%,
+      var(--darkColor),
+      var(--darkColor-80) 80%,
+      var(--darkColor-0)
     );
     position: absolute;
     z-index: 0;

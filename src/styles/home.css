@@ -3,10 +3,10 @@
 }
 #title_home {
   background: linear-gradient(
-    #43453c00 0%,
-    #43453c 30%,
-    #43453c 70%,
-    #43453c00 100%
+    var(--darkColor-0) 0%,
+    var(--darkColor) 30%,
+    var(--darkColor) 70%,
+    var(--darkColor-0) 100%
   );
   height: 600px;
   mix-blend-mode: multiply;
@@ -37,7 +37,7 @@
   z-index: 800;
   margin-top: 50rem;
   background: linear-gradient(
-    rgba(208, 217, 190, 0.9) 34%,
+    var(--lightColor-90) 34%,
     rgba(151, 128, 46, 0.9) 67%,
     rgba(106, 35, 0, 0.9) 100%
   );
@@ -109,7 +109,7 @@
   position: relative;
   width: 100%;
   height: 94.5vh;
-  background:rgba(67, 69, 60, 0.7);
+  background:var(--darkColor-70);
   color: var(--lightColor);
   overflow: hidden;
 }
@@ -126,13 +126,13 @@
 .HShome_home::before {
   left: 0;
   width: var(--before-width, 0);
-  background: linear-gradient(to right, #43453c 70%, transparent);
+  background: linear-gradient(to right, var(--darkColor) 70%, transparent);
 }
 
 .HShome_home::after {
   right: 0;
   width: var(--before-width, 0);
-  background: linear-gradient(to left, #43453c 70%, transparent);
+  background: linear-gradient(to left, var(--darkColor) 70%, transparent);
 }
 .HShome_home h2 {
   opacity: 0;
