@@ -114,7 +114,7 @@ button{
   font-size: var(--fontSmall);
 }
 #productPrice{
-  font-size: 2rem;
+  font-size: var(--fontspLarge);
 }
 .productActions{
     display: flex;
