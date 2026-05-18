@@ -21,22 +21,15 @@
   font-size: var(--fontHero);
   font-family: "Shippori Mincho B1", serif;
   white-space: nowrap;
-  /* animation:
-    fadeInb 1s forwards,
-    DisapearByScroll_title 1s linear both;
-  animation-timeline: auto, scroll();
-  animation-range: 0vh 70vh; */
 }
 #subtitle_home {
   position: relative;
   bottom: 4rem;
-  font-family: "LXGW WenKai TC", sans-serif;
   font-size: var(--fontLarge);
   opacity: 0.7;
 }
 #newsText_home {
   color: var(--darkColor);
-  font-family: "LXGW WenKai TC", sans-serif;
   font-size: var(--fontLarge);
 }
 #contentHome_home {
@@ -48,9 +41,6 @@
     rgba(151, 128, 46, 0.9) 67%,
     rgba(106, 35, 0, 0.9) 100%
   );
-  /* animation: DisapearByScroll_container 1s linear both;
-  animation-timeline: scroll();
-  animation-range: 10vh 30vh; */
   overflow: visible;
 }
 #pickedNews_home {
@@ -73,7 +63,6 @@
 }
 #pickedNews_home span{
   color: var(--darkColor);
-  font-family: "LXGW WenKai TC", sans-serif;
   font-size: var(--fontMedium);
 }
 #pickedNews_home h3{
@@ -116,12 +105,7 @@
 .HSsection_home {
   position: sticky;
   top: var(--navHeight);
-  /* animation: linear fadeIn forwards;
-  animation-range: entry 10% cover 15%; */
 }
-/* #section1_home .HSsection_home { animation-timeline: --section1_home-tl; }
-#section2_home .HSsection_home { animation-timeline: --section2_home-tl; }
-#section3_home .HSsection_home { animation-timeline: --section3_home-tl; } */
 .HShome_home {
   position: relative;
   width: 100%;
@@ -162,7 +146,6 @@
   text-shadow:
     0 0 2rem black,
     0 0 1rem black;
-  font-family: "Shippori Mincho B1", serif;
   font-size: var(--fontTitle);
 }
 .HShome_home h2::before {
@@ -177,16 +160,7 @@
 }
 .HShome_home svg {
   opacity: 0;
-  /* animation:
-    linear fadeIn forwards,
-    linear fadeIn forwards reverse;
-  animation-range:
-    cover 16% cover 20%,
-    cover 25% cover 75%; */
 }
-/* #section1_home svg { animation-timeline: --section1_home-tl; }
-#section2_home svg { animation-timeline: --section2_home-tl; }
-#section3_home svg { animation-timeline: --section3_home-tl; } */
 .loopWaveLine_home {
   position: absolute;
   display: block;
@@ -249,21 +223,13 @@
   display: grid;
   grid-template: 65vh / repeat(3, 1fr);
   gap: 8rem;
-  /* animation:
-    linear HSleft forwards;
-  animation-range:
-    cover 20% cover 80%; */
 } 
-/* #section1_home .HSImages_home { animation-timeline: --section1_home-tl; }
-#section2_home .HSImages_home { animation-timeline: --section2_home-tl; }
-#section3_home .HSImages_home { animation-timeline: --section3_home-tl; } */
 .HSImageItem_home {
   background: var(--bg);
   background-size: cover;
   background-position: center;
 }
 .HSsection_home span {
-  font-family: "LXGW WenKai TC", sans-serif;
   font-size: var(--fontMedium);
 }
 #BG_home {

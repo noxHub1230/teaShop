@@ -94,7 +94,7 @@ button{
     flex-direction: column;
     gap:1rem;
     color:var(--darkColor);
-    font-family: "LXGW Wenkai TC",sans-serif;
+    font-family: "LXGW WenKai TC",sans-serif;
 }
 #productInfo h1 {
   margin: 0;
