@@ -35,7 +35,7 @@ export default function Checkout() {
   };
 
   return (
-    <div id="BG_checkout" className="tab-page container-fluid p-0">
+    <div id="BG_checkout" className="normalPageContainer BG_normalPage tab-page container-fluid p-0">
         <div style={{textAlign:"center"}}><h3>購買總覽<hr/></h3></div>
         <div id="cartList">
             {cart.length === 0 ? (

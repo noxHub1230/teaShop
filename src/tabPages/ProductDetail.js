@@ -67,7 +67,7 @@ export default function ProductDetail() {
   }
   return (
     <div className="tab-page container-fluid p-0">
-      <div id="BG_productDetail" className='py-4'>
+      <div id="BG_productDetail" className='normalPageContainer BG_normalPage py-4'>
         <div id="content_productDetail">
           <div aria-label="breadcrumb">
             <ol className="breadcrumb">

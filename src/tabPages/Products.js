@@ -56,7 +56,7 @@ export default function Products() {
 
   return (
     <div className="tab-page container-fluid p-0">
-      <div id="BG_products" className='py-4'>
+      <div id="BG_products" className='normalPageContainer BG_normalPage py-4'>
         <header className="tab-page__header">
           <FeatureCarousel />
         </header>

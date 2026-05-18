@@ -1,9 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&family=Noto+Serif+TC:wght@200..900&family=Shippori+Mincho+B1&display=swap");
-
+/*=================多頁面共用樣式區================*/
 :root {
   --darkColor: #43453c;
   --lightColor: #d0d9be;
   --navHeight: 5.5rem;
+
+  --fontSmall:1rem;
+  --fontMedium:1.25rem;
+  --fontLarge:1.5rem;
+  --fontSpLarge:2rem;
+  --fontTitle:3rem;
+  --fontHero:5rem;
+}
+.BG_normalPage{
+  background: 
+    linear-gradient(to right, transparent, var(--lightColor) 5%, var(--lightColor) 95%, transparent),
+    linear-gradient(var(--darkColor), var(--darkColor)),
+    url("./material/242.jpg") center/cover repeat,
+    var(--lightColor);
+  background-blend-mode: normal, screen, multiply, normal;
+}
+.normalPageContainer{
+    width: 100%;
+  height: auto;
+  min-height: calc(100vh - var(--navHeight));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h1,h2,h3{
   font-family: "Shippori Mincho B1";
@@ -11,6 +34,7 @@ h1,h2,h3{
 span,p,li,button,Link{
  font-family: "LXGW WenKai TC";
 }
+/*==============================================*/
 .tab-content .tab-page{
   margin-top: calc(var(--navHeight));
   min-height: 100vh;
