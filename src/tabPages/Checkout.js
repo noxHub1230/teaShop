@@ -82,7 +82,7 @@ export default function Checkout() {
             )}
         </div>
         <div className="cartTotal">
-            合計：{totalPrice} 元
+            <span>合計：{totalPrice} 元</span>
         </div>
         {cart.length > 0 && (
           <button className="btn_cko" style={{ marginTop: "1rem" }} onClick={generatePDF}>

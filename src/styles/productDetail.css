@@ -10,7 +10,7 @@ button{
   border: none;
 }
 #content_productDetail{
-  width: min(90%,1100px);
+  width: var(--contentWidth);
   display: flex;
   flex-direction: column;
   gap:3rem;

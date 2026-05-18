@@ -16,6 +16,9 @@
   --fontSpLarge:2rem;
   --fontTitle:3rem;
   --fontHero:5rem;
+
+  --contentWidth:min(82rem, calc(100% - 8rem));
+  --contentPadding:4rem;
 }
 .BG_normalPage{
   background: 
