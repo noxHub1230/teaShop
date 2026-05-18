@@ -157,7 +157,7 @@ export default function Home() {
           className="d-flex justify-content-center align-items-center"
         ></div>
         <span id="titleText_home" className="text-center">
-          古林萃室 <hr />
+          <h1 id="maintitle_home">古林萃室 <hr /></h1>
           <small id="subtitle_home">採擷天地精華，品味自然甘醇</small>
         </span>
       </div>

@@ -19,8 +19,12 @@
   text-anchor: middle;
   color: var(--lightColor);
   font-size: var(--fontHero);
-  font-family: "Shippori Mincho B1", serif;
+  font-family: "Hina Mincho B1", serif;
   white-space: nowrap;
+}
+#maintitle_home{
+  font-family: "Hina Mincho";
+  font-size: var(--fontHero);
 }
 #subtitle_home {
   position: relative;

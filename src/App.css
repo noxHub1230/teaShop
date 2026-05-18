@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&family=Noto+Serif+TC:wght@200..900&family=Shippori+Mincho+B1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hina+Mincho&family=LXGW+WenKai+TC&family=Noto+Serif+TC:wght@200..900&family=Shippori+Mincho+B1&display=swap");
 /*=================多頁面共用樣式區================*/
 :root {
   --darkColor: #43453c;
@@ -39,8 +39,8 @@
 h1,h2,h3,h4,h5{
   font-family: "Shippori Mincho B1";
 }
-span,p,li,button,table,Link{
- font-family: "LXGW WenKai TC"!important;
+span,p,li,button,table,Link,small{
+ font-family: "LXGW WenKai TC";
 }
 /*==============================================*/
 .tab-content .tab-page{
