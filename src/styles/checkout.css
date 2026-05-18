@@ -46,6 +46,7 @@
   color: var(--lightColor);
   background: var(--darkColor);
   padding: 0.5rem;
+  font-family: "LXGW WenKai TC";
 }
 .btn_cko:hover{
   opacity: 0.85;
