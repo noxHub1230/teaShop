@@ -59,7 +59,7 @@
   transform:translateX(-50%);
   color:var(--lightColor);
   font-family: "LXGW WenKai TC", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--fontLarge);
   text-shadow: 0 3px 3px black;
 }
 .carousel-item,.carousel-item img{

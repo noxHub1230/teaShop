@@ -9,7 +9,7 @@ font-family: "LXGW WenKai TC";
   width: 45%;
   margin-top: 1rem;
   padding: 2rem;
-  font-size: 1.25rem;
+  font-size: var(--fontMedium);
   border:2px solid var(--darkColor);
   display: flex;
   flex-direction: row;
@@ -18,7 +18,7 @@ font-family: "LXGW WenKai TC";
 #cartTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 1.25rem;
+  font-size: var(--fontMedium);
   font-family: "LXGW WenKai TC";
 }
 #cartTable th, #cartTable td {
@@ -31,7 +31,7 @@ font-family: "LXGW WenKai TC";
 }
 .cartTotal{
   margin-top: 1rem;
-  font-size: 2rem;
+  font-size: var(--fontSpLarge);
   font-family: "LXGW WenKai TC";
 }
 
@@ -43,7 +43,7 @@ font-family: "LXGW WenKai TC";
   border: none;
   cursor: pointer;
   color: var(--darkColor);
-  font-size: 1rem;
+  font-size: var(--fontSmall);
   padding: 0 0.25rem;
 }
 .btn_cko{

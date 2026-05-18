@@ -11,14 +11,14 @@
   color: var(--lightColor);
   opacity: 0.7;
   border: none;
-  font-size: 2rem;
+  font-size: var(--fontSpLarge);
 }
 #cartBubble:hover{
   opacity: 1;
   filter: drop-shadow(0 0 5px var(--lightColor));
 }
 #cartCount{
-    font-size: 1rem;
+    font-size: var(--fontSmall);
     position: absolute;
     top: -0.5rem;
     background: radial-gradient(var(--lightColor) 55%, black 100%);

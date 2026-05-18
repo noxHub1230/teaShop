@@ -18,7 +18,7 @@
   transform: translateX(-50%);
   text-anchor: middle;
   color: var(--lightColor);
-  font-size: 5rem;
+  font-size: var(--fontHero);
   font-family: "Shippori Mincho B1", serif;
   white-space: nowrap;
   /* animation:
@@ -31,13 +31,13 @@
   position: relative;
   bottom: 4rem;
   font-family: "LXGW WenKai TC", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--fontLarge);
   opacity: 0.7;
 }
 #newsText_home {
   color: var(--darkColor);
   font-family: "LXGW WenKai TC", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--fontLarge);
 }
 #contentHome_home {
   position: relative;
@@ -74,7 +74,7 @@
 #pickedNews_home span{
   color: var(--darkColor);
   font-family: "LXGW WenKai TC", sans-serif;
-  font-size: 1.25rem;
+  font-size: var(--fontMedium);
 }
 #pickedNews_home h3{
   font-family: "Shippori Mincho B1";
@@ -163,13 +163,13 @@
     0 0 2rem black,
     0 0 1rem black;
   font-family: "Shippori Mincho B1", serif;
-  font-size: 3rem;
+  font-size: var(--fontTitle);
 }
 .HShome_home h2::before {
   content: "";
   position: absolute;
   z-index: -1;
-  top: -5.5rem;
+  top: calc(-1*var(--navHeight));
   left: -2rem;
   height: var(--h2-height, 0);
   width: calc(100% + 4rem);
@@ -264,7 +264,7 @@
 }
 .HSsection_home span {
   font-family: "LXGW WenKai TC", sans-serif;
-  font-size: 1.25rem;
+  font-size: var(--fontMedium);
 }
 #BG_home {
   position: fixed;

@@ -50,7 +50,7 @@ button{
   border-radius: 50%;
   background: var(--darkColor);
   color: var(--lightColor);
-  font-size: 1.5rem;
+  font-size: var(--fontLarge);
   opacity: 0.25;
 }
 .carouselArrow_pD.pre{
@@ -105,13 +105,13 @@ button{
 }
 #productInfo p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--fontMedium);
   line-height: 1.8;
 }
 #productInfo .badge{
   background: var(--darkColor);
   color: var(--lightColor);
-  font-size: 1rem;
+  font-size: var(--fontSmall);
 }
 #productPrice{
   font-size: 2rem;
@@ -301,17 +301,17 @@ text-shadow: 0 0 3px var(--darkColor);
   order: -1;
 }
 .productIntroText_pD h2 {
-  font-size: 1.6rem;
+  font-size: var(--fontLarge);
   line-height: 1.4;
 }
 
 .productIntroText_pD h3 {
-  font-size: 1.2rem;
+  font-size: var(--fontMedium);
   margin-top: 1.5rem;
 }
 
 .productIntroText_pD p {
-  font-size: 1rem;
+  font-size: var(--fontSmall);
   line-height: 1.9;
 }
 
