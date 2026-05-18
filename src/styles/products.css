@@ -32,7 +32,7 @@ width: 80%;
   transform: rotate(180deg);
 }
 #dpFilter,#sortFilter{
-  font-family: "LXGW Wenkai TC",sans-serif;
+  font-family: "LXGW WenKai TC",sans-serif;
   color: var(--darkColor);
 }
 #sortFilter .dropdown-toggle::after{

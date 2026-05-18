@@ -66,8 +66,7 @@
   font-size: var(--fontMedium);
 }
 #pickedNews_home h3{
-  font-family: "Shippori Mincho B1";
-  font-weight: bold;;
+  font-weight: bold;
   color: var(--darkColor);  
 }
 #pickedNews_home hr{
