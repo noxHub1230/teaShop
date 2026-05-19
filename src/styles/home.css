@@ -96,15 +96,6 @@
   height: 450vh;
 
 }
-#section1_home {
-  view-timeline: --section1_home-tl block;
-}
-#section2_home {
-  view-timeline: --section2_home-tl block;
-}
-#section3_home {
-  view-timeline: --section3_home-tl block;
-}
 .HSsection_home {
   position: sticky;
   top: var(--navHeight);
@@ -170,7 +161,7 @@
   z-index: 1;
   left: 0;
   top: calc(50vh - 6rem);
-  width: 200dvw;
+  width: 200vw;
   height: 10rem;
   overflow: visible;
 }
@@ -182,7 +173,7 @@
 }
 
 .page_home path {
-  width: 100dvw;
+  width: 100vw;
   height: 5rem;
   fill: none;
   stroke-width: 0.1rem;
@@ -220,9 +211,9 @@
   opacity: 0;
   position: relative;
   z-index: 1;
-  width: 300dvw;
+  width: 300vw;
   top: -3rem;
-  left: calc(50dvw - (300dvw - 16rem) / 6);
+  left: calc(50vw - (300vw - 16rem) / 6);
   display: grid;
   grid-template: 65vh / repeat(3, 1fr);
   gap: 8rem;
@@ -238,7 +229,7 @@
 #BG_home {
   position: fixed;
   z-index: -1;
-  min-height: 100dvh;
+  min-height: 100vh;
   top: 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -270,12 +261,12 @@
 @keyframes DisapearByScroll_title {
   from {
     opacity: 1;
-    scale: 1;
+    transform: scale(1);
     transform-origin: left center;
   }
   to {
     opacity: 0;
-    scale: 0.8;
+    transform: scale(0.8);
     transform-origin: left center;
   }
 }
@@ -312,6 +303,6 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc((300dvw - 16rem) / 3 * -2 - 10dvw));
+    transform: translateX(calc((300vw - 16rem) / 3 * -2 - 10vw));
   }
 }

@@ -139,11 +139,11 @@ align-items: center;
 justify-content: center;
 }
 .quantityCtrl i{
-  scale: 1.5;
+  transform: scale(1.5);
 }
 .quantityCtrl i:hover{
-scale: 1.25;
-transform: translateY(-2px);
+transform: scale(1.25),
+translateY(-2px);
 transition: 0.5s;
 text-shadow: 0 0 3px var(--darkColor);
 }
