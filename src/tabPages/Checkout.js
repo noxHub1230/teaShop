@@ -4,10 +4,13 @@ import { useNavigate} from "react-router-dom";
 import "../styles/checkout.css"
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-import Receipt from "../components/receipt/receipt";
+import Receipt from "../components/receipt/Receipt";
+import { useAuth } from "../components/authModel/auth";
 
 export default function Checkout() {
   const { cart, totalPrice,updateQuantity,removeItem } = useCart();
+      // 取得目前會員狀態，以及開啟登入視窗的方法
+    const { user, openAuthModel } = useAuth();
     const navigate=useNavigate();
 
     const handleDecrease = (item) => {
@@ -17,6 +20,18 @@ export default function Checkout() {
     } else {
       updateQuantity(item.id, item.quantity - 1);
     }
+    };
+
+        // 點擊下載收據時先檢查有沒有登入
+    const handleDownloadReceipt = () => {
+      // 如果沒有登入，就打開登入視窗
+      if (!user) {
+        openAuthModel(generatePDF);
+        return;
+      }
+
+      // 如果已經登入，就直接下載收據
+      generatePDF();
     };
 
     const generatePDF = async () => {
@@ -85,7 +100,7 @@ export default function Checkout() {
             <span>合計：{totalPrice} 元</span>
         </div>
         {cart.length > 0 && (
-          <button className="btn_cko" style={{ marginTop: "1rem" }} onClick={generatePDF}>
+          <button className="btn_cko" style={{ marginTop: "1rem" }} onClick={handleDownloadReceipt}>
             下載收據
           </button>
         )}

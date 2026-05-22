@@ -1,0 +1,116 @@
+/* 最底層：覆蓋整個畫面的黑色半透明背景 */
+.authOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--darkColor);
+}
+
+.authOverlay h3 {
+    margin-bottom: 2rem;
+    font-size: var(--fontTitle);
+    position: relative; /* 讓線可以定位在字體下方 */
+    padding-bottom: 0.5rem; /* 留點空間給漸層線，畫面才不會太擠 */
+}
+
+.authOverlay h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: 100%;
+    height: 2px; /* 線的粗細 */
+    background: linear-gradient(to right, var(--darkColor), transparent);
+}
+
+/* 最上層：會員操作區塊 */
+.authPanel {
+  width: 35%;
+  height: 45%;
+  background: var(--lightColor);
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 關閉按鈕放在右上角 */
+.authCloseBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+   font-family: "LXGW WenKai TC";
+}
+
+.authForm input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+}
+
+.authForm > button[type="submit"] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+}
+
+.authHint,
+.authMessage {
+  margin: 0;
+}
+
+.authMessage {
+  color: #9b1c1c;
+}
+
+.authActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.authActions button {
+  border: none;
+  background: transparent;
+  color: var(--darkColor);
+  font-family: "LXGW WenKai TC";
+}
+
+.passwordInputWrap {
+  position: relative;
+  width: 100%;
+}
+
+.passwordInputWrap input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.passwordToggleBtn {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 手機螢幕比較窄，所以登入框要變大 */
+@media (max-width: 768px) {
+  .authPanel {
+    width: 85%;
+    height: 55%;
+  }
+}

@@ -1,12 +1,13 @@
 import React, { useState ,useEffect} from 'react';
 import "../styles/products.css";
-import FeatureCarousel from '../components/featureCarousel/featureCarousel';
+import FeatureCarousel from '../components/featureCarousel/FeatureCarousel';
 import { useNavigate } from 'react-router-dom';
 import { filter , sort} from "../data/data_products";
 import {supabase} from "../supabaseClient";
-
+import { useLoading } from "../components/loading/loading";
 
 export default function Products() {
+  const { startLoading, stopLoading } = useLoading();
   const navigate=useNavigate();
   const[isHovered,setIsHovered]=useState(false);
   const[isOpen,setItOpen]=useState(false);
@@ -14,27 +15,29 @@ export default function Products() {
   const[sortType,setSortType]=useState("");
 
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchProducts() {
+
+useEffect(() => {
+  async function fetchProducts() {
+    startLoading();
+
+    try {
       const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        console.log('data:', data)   // ← 加這行
-        console.log('error:', error) // ← 加這行
+        .from("products")
+        .select("*");
+
       if (error) {
-        console.error('商品載入失敗：', error)
+        console.error(error);
       } else {
-        setProducts(data)
+        setProducts(data);
       }
-      setLoading(false)
+    } finally {
+      stopLoading();
     }
-    fetchProducts()
-  }, [])
+  }
 
-  if (loading) return <p style={{color:"white",padding:"2rem"}}>載入中...</p>
-
+  fetchProducts();
+}, [startLoading, stopLoading]);
 
   const filterToggle =(opt)=>{
     setSelected((previous)=>{

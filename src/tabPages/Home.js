@@ -5,7 +5,7 @@ import { gsap, ScrollTrigger } from "./gsapSetup";
 import { waveline, waveline_alt } from "../material/graphy";
 import { HSContent } from "../data/data_home";
 import { manageNews, eventNews } from "../data/data_news";
-import FeatureCarousel from "../components/featureCarousel/featureCarousel";
+import FeatureCarousel from "../components/featureCarousel/FeatureCarousel";
 
 export default function Home() {
   useEffect(() => {

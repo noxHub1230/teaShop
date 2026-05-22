@@ -1,5 +1,5 @@
 import React from "react";
-import "./featureCarousel.css";
+import "./FeatureCarousel.css";
 import carouselImage1 from "../../material/carousel_home_image1.png";
 import carouselImage2 from "../../material/carousel_home_image2.png";
 import carouselImage3 from "../../material/carousel_home_image3.png";

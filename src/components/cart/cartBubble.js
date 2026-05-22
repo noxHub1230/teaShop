@@ -1,5 +1,5 @@
 import React from "react";
-import "./cartBubble.css";
+import "./CartBubble.css";
 import {useCart} from "./cart";
 import {useNavigate} from "react-router-dom";
 
