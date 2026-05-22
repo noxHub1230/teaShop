@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "../styles/productDetail.css";
 import { Link,useParams } from 'react-router-dom';
 import ReactMarkdown from "react-markdown";
-import { products } from"../data/data_products";
+import { supabase } from "../supabaseClient";
 import { gsap, ScrollTrigger } from "./gsapSetup";
 import { navItems } from "../data/data_basic";
 import {useCart} from "../components/cart/cart";
@@ -15,10 +15,11 @@ export default function ProductDetail() {
   const productsPageLabel = productsPage ? productsPage.label : "Products";
   
   const [quantity,setQuantity]=useState(1);
-  const {id}=useParams();
-  
-  const product=products.find((item)=>item.id===Number(id));
-  const productImages=product?[product.image,...product.detailImages]:[];
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const productImages=product?[product.image,...product.detail_images]:[];
   const [pickedImage,setPickedImage]=useState(null);
   
   const currentIndex = productImages.indexOf(pickedImage); 
@@ -32,6 +33,26 @@ export default function ProductDetail() {
       currentIndex === productImages.length - 1 ? 0 : currentIndex + 1;
     setPickedImage(productImages[nextIndex]);
   };
+
+  useEffect(() => {
+  async function fetchProduct() {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('id', Number(id))
+      .single()
+    console.log('data:', data)   // ← 加這行
+    console.log('error:', error) // ← 加這行
+    if (error) {
+      console.error('商品載入失敗：', error)
+    } else {
+      setProduct(data)
+    }
+    setLoading(false)
+  }
+  fetchProduct()
+  }, [id])
+
   
   useEffect(()=>{
     setPickedImage(productImages[0]);
@@ -55,6 +76,7 @@ export default function ProductDetail() {
     };
   }, [product]);
 
+  if (loading) return <p style={{color:"white",padding:"2rem"}}>載入中...</p>
 
   if (!product) {
   return (
@@ -139,7 +161,7 @@ export default function ProductDetail() {
           <div id="productIntro">
             <div className="productIntro_pD pIpD1">
               <div className="productIntroText_pD" style={{whiteSpace:"pre-line"}}><ReactMarkdown>{product.description}</ReactMarkdown></div>
-              <div className="productIntroImg_pD" style={{backgroundImage:`url(${product.desImg[0]})`}}></div>
+              <div className="productIntroImg_pD" style={{backgroundImage:`url(${product.des_img[0]})`}}></div>
             </div>
             <div className="productIntro_pD pIpD2">
             </div>

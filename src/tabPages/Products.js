@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import "../styles/products.css";
 import FeatureCarousel from '../components/featureCarousel/featureCarousel';
 import { useNavigate } from 'react-router-dom';
-import { products , filter , sort} from "../data/data_products";
+import { filter , sort} from "../data/data_products";
+import {supabase} from "../supabaseClient";
 
 
 export default function Products() {
@@ -11,6 +12,30 @@ export default function Products() {
   const[isOpen,setItOpen]=useState(false);
   const[selected,setSelected]=useState([]);
   const[sortType,setSortType]=useState("");
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        console.log('data:', data)   // ← 加這行
+        console.log('error:', error) // ← 加這行
+      if (error) {
+        console.error('商品載入失敗：', error)
+      } else {
+        setProducts(data)
+      }
+      setLoading(false)
+    }
+    fetchProducts()
+  }, [])
+
+  if (loading) return <p style={{color:"white",padding:"2rem"}}>載入中...</p>
+
+
   const filterToggle =(opt)=>{
     setSelected((previous)=>{
       return previous.includes(opt)?
@@ -76,7 +101,7 @@ export default function Products() {
                         <input id={`fliter-${item.type}-${option}`} type="checkbox"
                         checked={selected.includes(option)}
                         onChange={()=>{return filterToggle(option)}}/>
-                        <label for={`fliter-${item.type}-${option}`}>{option}</label>
+                        <label htmlFor={`fliter-${item.type}-${option}`}>{option}</label>
                       </li>
                     ))}
                   </ul>
