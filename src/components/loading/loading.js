@@ -17,6 +17,16 @@ export function LoadingProvider({ children }) {
     }, []);
 
     const isLoading = pendingCount > 0;
+      useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+    }, [isLoading]);
 
   const waitForImages = (container) => {
   const images = Array.from(container.querySelectorAll("img"));
