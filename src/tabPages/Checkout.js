@@ -67,8 +67,7 @@ export default function Checkout() {
     const imgWidth = 170;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
     pdf.addImage(imgData, "PNG", 20, 20, imgWidth, imgHeight);
-    const blobUrl = pdf.output("bloburl");
-    window.open(blobUrl, "_blank");
+    pdf.save(`古林萃室_訂單_${orderNumber}.pdf`);
 
     // 儲存訂單紀錄到 Supabase
     const orderItems = cartWithDetails.map((item) => ({
