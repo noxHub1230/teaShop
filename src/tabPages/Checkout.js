@@ -70,7 +70,7 @@ export default function Checkout() {
     const blobUrl = pdf.output("bloburl");
     window.open(blobUrl, "_blank");
 
-    // 儲存訂單紀錄到Supabase
+    // 儲存訂單紀錄到 Supabase
     const orderItems = cartWithDetails.map((item) => ({
       product_id: item.id,
       product_name: item.name,
