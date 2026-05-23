@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useState,useEffect } from "react";
 
 // 建立 Loading Context，讓全站可以共用 loading 狀態
 const loadingContext = createContext();
