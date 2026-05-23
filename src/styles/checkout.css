@@ -1,23 +1,26 @@
-#BG_checkout h3{
+#BG_checkout h3 {
   font-weight: bold;
   margin-top: 4rem;
 }
-#cartList{
+#cartList {
   width: 45%;
   margin-top: 1rem;
   padding: 2rem;
   font-size: var(--fontMedium);
-  border:2px solid var(--darkColor);
+  border: 2px solid var(--darkColor);
   display: flex;
   flex-direction: row;
   justify-content: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 #cartTable {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--fontMedium);
 }
-#cartTable th, #cartTable td {
+#cartTable th,
+#cartTable td {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--darkColor);
   text-align: left;
@@ -25,11 +28,10 @@
 #cartTable th {
   font-weight: bold;
 }
-.cartTotal{
+.cartTotal {
   margin-top: 1rem;
   font-size: var(--fontSpLarge);
 }
-
 .qtyCell {
   text-align: center;
 }
@@ -41,13 +43,25 @@
   font-size: var(--fontSmall);
   padding: 0 0.25rem;
 }
-.btn_cko{
+.btn_cko {
   border-radius: 10px;
   color: var(--lightColor);
   background: var(--darkColor);
   padding: 0.5rem;
   font-family: "LXGW WenKai TC";
 }
-.btn_cko:hover{
+.btn_cko:hover {
   opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  #cartList {
+    width: 90%;
+    padding: 1rem;
+  }
+  #cartTable th,
+  #cartTable td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.85rem;
+  }
 }
