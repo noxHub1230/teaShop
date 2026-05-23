@@ -183,7 +183,7 @@
   opacity: 0;
   width: fit-content;
   position: relative;
-  z-index: 2;
+  z-index: 4;
   text-align: center;
   text-shadow:
     0 0 1rem black,
