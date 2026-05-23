@@ -35,6 +35,7 @@ export default function AuthModel() {
 
   const [mode, setMode] = useState(authInitialMode);
   const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -67,7 +68,7 @@ export default function AuthModel() {
       if (mode === "login") {
         await login(email, password);
       } else if (mode === "register") {
-        await register(email, password);
+        await register(email, password, displayName);
         setMode("login");
         setErrorMessage("註冊成功，請登入會員");
       } else if (mode === "forgot") {
@@ -109,6 +110,14 @@ export default function AuthModel() {
             "重設密碼"}</h3>
 
         <form className="authForm" onSubmit={handleSubmit}>
+        {mode === "register" && (
+          <input
+            type="text"
+            placeholder="顯示名稱"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+          />
+        )}
         {mode !== "reset" && (
           <input
             type="email"

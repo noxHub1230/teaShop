@@ -75,8 +75,8 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const register = async (email, password) => {
-    const data = await signUpWithEmail(email, password);
+  const register = async (email, password, displayName) => {
+    const data = await signUpWithEmail(email, password, displayName);
     return data;
   };
 

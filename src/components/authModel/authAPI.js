@@ -15,7 +15,7 @@ const getErrorMessage = (data, fallback) =>
   data?.error_description ||
   fallback;
 
-export async function signUpWithEmail(email, password) {
+export async function signUpWithEmail(email, password, displayName) {
   const response = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
     method: "POST",
     headers: {
@@ -25,6 +25,9 @@ export async function signUpWithEmail(email, password) {
     body: JSON.stringify({
       email,
       password,
+      data: {
+        display_name: displayName,
+      },
     }),
   });
 
