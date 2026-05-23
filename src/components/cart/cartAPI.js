@@ -64,11 +64,14 @@ export async function deleteCartItem(accessToken, product_id) {
 }
 
 // 清空整個購物車
-export async function clearCart(accessToken) {
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/carts?id=neq.null`, {
-    method: "DELETE",
-    headers: headers(accessToken),
-  });
+export async function clearCart(accessToken, userId) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/carts?user_id=eq.${userId}`,
+    {
+      method: "DELETE",
+      headers: headers(accessToken),
+    }
+  );
   if (!response.ok) throw new Error("清空購物車失敗");
   return true;
 }

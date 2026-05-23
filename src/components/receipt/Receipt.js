@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../material/logo.png";
 
-export default function Receipt({ cart, totalPrice }) {
+export default function Receipt({ cart, totalPrice ,user}) {
   return (
     <div id="receiptTarget"
       style={{
@@ -27,6 +27,16 @@ export default function Receipt({ cart, totalPrice }) {
         />
       <hr />
       <p id="receiptOrderNum" style={{ fontSize: "0.9rem" }}></p>
+        {user && (
+          <>
+            <p style={{ fontSize: "0.9rem" }}>
+              帳戶名稱：{user.user_metadata?.display_name ?? "未設定"}
+            </p>
+            <p style={{ fontSize: "0.9rem" }}>
+              帳號：{user.email}
+            </p>
+          </>
+        )}
       <p style={{ fontSize: "0.9rem" }}>
         訂購日期：{new Date().toLocaleDateString("zh-TW")}
       </p>

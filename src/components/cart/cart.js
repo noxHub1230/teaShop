@@ -112,7 +112,7 @@ export function CartProvider({ children }) {
 
   const clearCartAll = async () => {
     if (user && accessToken) {
-      await clearCart(accessToken);
+      await clearCart(accessToken, user.id);
     }
     setCart([]);
     localStorage.removeItem("teaShop_cart");

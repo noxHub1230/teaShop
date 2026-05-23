@@ -7,10 +7,11 @@ import html2canvas from "html2canvas";
 import Receipt from "../components/receipt/Receipt";
 import { useAuth } from "../components/authModel/auth";
 import { supabase } from "../supabaseClient";
+import { insertOrderHistory } from "../components/order/orderAPI";
 
 export default function Checkout() {
-  const { cart, totalPrice, updateQuantity, removeItem } = useCart();
-  const { user, openAuthModel } = useAuth();
+  const { cart, updateQuantity, removeItem, clearCartAll } = useCart();
+  const { user, openAuthModel, accessToken } = useAuth();
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
@@ -58,6 +59,7 @@ export default function Checkout() {
   const generatePDF = async () => {
     const orderNumber = `GL-${Date.now()}`;
     document.getElementById("receiptOrderNum").innerText = `訂單編號：${orderNumber}`;
+
     const target = document.getElementById("receiptTarget");
     const canvas = await html2canvas(target, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
@@ -66,6 +68,25 @@ export default function Checkout() {
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
     pdf.addImage(imgData, "PNG", 20, 20, imgWidth, imgHeight);
     pdf.save(`古林萃室_訂單_${orderNumber}.pdf`);
+
+    // 儲存訂單紀錄到 Supabase
+    const orderItems = cartWithDetails.map((item) => ({
+      product_id: item.id,
+      product_name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    }));
+
+    await insertOrderHistory(
+      accessToken,
+      user.id,
+      orderNumber,
+      computedTotalPrice,
+      orderItems
+    );
+
+    // 清空購物車
+    await clearCartAll();
   };
 
   return (
@@ -114,10 +135,10 @@ export default function Checkout() {
       </div>
       {cartWithDetails.length > 0 && (
         <button className="btn_cko" style={{ marginTop: "1rem" }} onClick={handleDownloadReceipt}>
-          下載收據
+          送出訂單並下載收據
         </button>
       )}
-      <Receipt cart={cartWithDetails} totalPrice={computedTotalPrice} />
+      <Receipt cart={cartWithDetails} totalPrice={computedTotalPrice} user={user}/>
     </div>
   );
 }
