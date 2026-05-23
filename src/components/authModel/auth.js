@@ -13,8 +13,22 @@ export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null);
   const [isAuthModelOpen, setIsAuthModelOpen] = useState(false);
   const [afterLoginAction, setAfterLoginAction] = useState(null);
+  const [authInitialMode, setAuthInitialMode] = useState("login");
 
   useEffect(() => {
+        // 偵測是否是從重設密碼信回來的
+    const hash = window.location.hash;
+    if (hash.includes("type=recovery")) {
+      const params = new URLSearchParams(hash.replace("#", ""));
+      const token = params.get("access_token");
+      if (token) {
+        setAccessToken(token);
+        setAuthInitialMode("reset"); // 改這行
+        setIsAuthModelOpen(true);
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    }
+
     const savedToken = localStorage.getItem("teaShop_accessToken");
 
     if (!savedToken) return;
@@ -34,6 +48,7 @@ export function AuthProvider({ children }) {
 
   const openAuthModel = (callback = null) => {
     setAfterLoginAction(() => callback);
+    setAuthInitialMode("login");
     setIsAuthModelOpen(true);
   };
 
@@ -81,6 +96,7 @@ export function AuthProvider({ children }) {
         user,
         accessToken,
         isAuthModelOpen,
+        authInitialMode,
         openAuthModel,
         closeAuthModel,
         login,

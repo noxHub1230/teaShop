@@ -96,3 +96,47 @@ export async function signOut(accessToken) {
 
   return true;
 }
+
+// 寄重設密碼信
+export async function sendPasswordResetEmail(email) {
+  const response = await fetch(`${SUPABASE_URL}/auth/v1/recover`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  if (!response.ok) {
+    const data = await response.json();
+    throw new Error(getErrorMessage(data, "寄送失敗"));
+  }
+
+  return true;
+}
+
+// 用新密碼更新（使用者點連結回來後呼叫）
+export async function updatePassword(accessToken, newPassword) {
+  const response = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
+    method: "PUT",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password: newPassword,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(getErrorMessage(data, "密碼更新失敗"));
+  }
+
+  return data;
+}
