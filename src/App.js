@@ -142,7 +142,8 @@ function App() {
                 <section key={index} style={{width:"15vw",flexWrap:"wrap",display:"flex", flexDirection:"column", alignItems:"center"}}>
                   <h5>{group.way}</h5>
                   <hr style={{width:"100%"}}/>
-                  {group.infos.map((item,i)=>item.tabName?(
+                {group.infos.map((item, i) =>
+                  item.hidden ? null : item.tabName ? (
                     <a
                       key={i}
                       href="#"
@@ -151,15 +152,16 @@ function App() {
                         e.preventDefault();
                         rwdNavCtrl(item.tabName);
                       }}
-                      style={{color:"#d0d9be", marginBottom:"1rem"}}
+                      style={{ color: "#d0d9be", marginBottom: "1rem" }}
                     >
                       {item.text}
                     </a>
-                  ):(
+                  ) : (
                     <p key={i}>
                       {item.text}
                     </p>
-                  ))}
+                  )
+                )}
                 </section>
               ))}
             </div>

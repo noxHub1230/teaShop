@@ -66,14 +66,14 @@ export const contactInfo=[
       {text:""}
     ]
   },
-  {
-    way:"導覽綱要",
-    infos:[
-      {text:"首頁",tabName:"home"},
-      {text:"資訊消息",tabName:"news"},
-      {text:"經營歷史",tabName:"history"},
-      {text:"特色產品",tabName:"products"},
-      {text:"門市據點",tabName:"contact"}
-    ]
-  }
+{
+  way: "導覽綱要",
+  infos: [
+    { text: "首頁", tabName: "home" },
+    { text: "資訊消息", tabName: "news", hidden: true },
+    { text: "經營歷史", tabName: "history", hidden: true },
+    { text: "特色產品", tabName: "products" },
+    { text: "門市據點", tabName: "contact", hidden: true }
+  ]
+}
 ];
