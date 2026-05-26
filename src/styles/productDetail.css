@@ -70,7 +70,8 @@ button{
   transform: translateY(-1.5rem);
 }
 .thumb_pD{
-  width: 100%;
+  align-self: center;
+  width:80%;
   aspect-ratio: 1/1;
   background-size: cover;
   background-position: center;
@@ -230,11 +231,11 @@ text-shadow: 0 0 3px var(--darkColor);
   }
 
   .carouselArrow_pD.pre {
-    transform: translateX(6rem);
+    transform: translateX(1rem);
   }
 
   .carouselArrow_pD.nxt {
-    transform: translateX(-6rem);
+    transform: translateX(-1rem);
   }
 
   .carouselArrow_pD.pre:hover {
