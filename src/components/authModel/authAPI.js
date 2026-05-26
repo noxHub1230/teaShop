@@ -110,6 +110,7 @@ export async function sendPasswordResetEmail(email) {
     },
     body: JSON.stringify({
       email,
+      redirectTo: `${window.location.origin}`,  // ← 加這行
     }),
   });
 
