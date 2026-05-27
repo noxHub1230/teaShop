@@ -1,33 +1,135 @@
-.loadingOverlay {
+/* ===== Google Fonts：Hina Mincho ===== */
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap');
+
+/* ===== CSS 變數 ===== */
+:root {
+  --ls-bg: #43453C;
+  --ls-accent: #D0D9BE;
+}
+
+/* ===== 全螢幕覆蓋層 ===== */
+.ls-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--ls-bg);
   z-index: 10000;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: ls-fadein 0.4s ease forwards;
 }
 
-.loadingBox {
-  background: var(--lightColor);
-  padding: 2rem 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+.ls-overlay--fadeout {
+  animation: ls-fadeout 0.7s ease forwards;
 }
 
-.loadingSpinner {
-  width: 3rem;
-  height: 3rem;
-  border: 4px solid rgba(0, 0, 0, 0.15);
-  border-top-color: var(--darkColor);
-  border-radius: 50%;
-  animation: loadingSpin 0.8s linear infinite;
+@keyframes ls-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-@keyframes loadingSpin {
-  to {
-    transform: rotate(360deg);
+@keyframes ls-fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ===== Mask group 容器 ===== */
+/*
+  結構說明：
+  ┌─────────────────┐
+  │  ls-logo-wrap   │  ← 相對定位容器，尺寸 = logo 大小
+  │  ┌───────────┐  │
+  │  │ ls-logo   │  │  ← 原始 logo 圖片（透明背景PNG）
+  │  └───────────┘  │
+  │  ┌───────────┐  │
+  │  │ ls-tint   │  │  ← accent 色填滿，用 logo 圖片當 mask → 呈現染色效果
+  │  └───────────┘  │
+  │  ┌───────────┐  │
+  │  │ ls-cover  │  │  ← 背景色遮罩，從頂部往下，隨進度縮小高度，露出下方染色 logo
+  │  └───────────┘  │
+  └─────────────────┘
+*/
+.ls-logo-wrap {
+  position: relative;
+  width: clamp(80px, 12.8vw, 184px);
+  aspect-ratio: 1 / 1;
+  margin-bottom: clamp(12px, 2vw, 28px);
+  /* 防止子層溢出 */
+  overflow: hidden;
+}
+
+/* ===== 原始 logo（透明 PNG，深色線稿） ===== */
+.ls-logo {
+  position: absolute;
+  inset: 0;
+  background: url('../../material/logo-single.png') center center / contain no-repeat;
+}
+
+/* ===== 染色層：accent 色 + logo 形狀遮罩 ===== */
+/*
+  原理：
+  - background: 淡色（#D0D9BE）
+  - -webkit-mask-image / mask-image：用同一張 logo PNG 當剪切遮罩
+    → PNG 有顏色的地方顯示淡色，透明的地方穿透（看到背景）
+  → 視覺效果：logo 形狀 = 淡色，其他 = 透明（顯示深橄欖背景）
+*/
+.ls-tint {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ls-accent);
+  -webkit-mask-image: url('../../material/logo-single.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('../../material/logo-single.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  opacity: 0;                      
+  transition: opacity 0.08s linear; 
+}
+
+/* ===== 進度遮罩：從頂部往下覆蓋，隨進度縮小 ===== */
+/*
+  progress=0%  → height=100% → 完全遮住染色 logo（全暗）
+  progress=50% → height=50%  → 遮住上半部，下半部露出
+  progress=100%→ height=0%   → 完全露出染色 logo（全亮）
+
+  漸層底部是透明的（設計稿 gradient），讓遮罩邊緣自然淡出
+*/
+.ls-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height 由 JS inline style 控制 */
+  background: linear-gradient(180deg, #43453C 87.02%, rgba(67, 69, 60, 0) 100%);
+  pointer-events: none;
+  /* 高度變化平滑 */
+  transition: height 0.08s linear;
+}
+
+/* ===== 百分比數字 ===== */
+.ls-percent {
+  font-family: 'Hina Mincho', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(24px, 3.33vw, 48px);
+  line-height: 1.46;
+  text-align: center;
+  color: var(--ls-accent);
+  min-width: clamp(60px, 8.9vw, 128px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* ===== 手機版微調 ===== */
+@media (max-width: 480px) {
+  .ls-logo-wrap {
+    width: clamp(64px, 22vw, 120px);
+  }
+  .ls-percent {
+    font-size: clamp(20px, 6vw, 32px);
   }
 }
