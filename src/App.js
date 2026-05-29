@@ -96,7 +96,8 @@ function App() {
                   <li className="nav-item">
                   {user ? (
                     <button className="nav-link" onClick={logout}>
-                      會員登出
+                      <div className="accountAvatar"></div>
+                      {user.user_metadata.display_name}
                     </button>
                   ) : (
                     <button className="nav-link" onClick={() => openAuthModel()}>

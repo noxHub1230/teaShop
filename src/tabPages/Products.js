@@ -1,6 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import "../styles/products.css";
 import FeatureCarousel from '../components/featureCarousel/FeatureCarousel';
+import TabPageBG from '../components/tabPageBG/TabPageBG';
 import { useNavigate } from 'react-router-dom';
 import { filter , sort} from "../data/data_products";
 import {supabase} from "../supabaseClient";
@@ -83,8 +84,7 @@ useEffect(() => {
 });
 
   return (
-    <div className="tab-page container-fluid p-0">
-      <div id="BG_products" className='normalPageContainer BG_normalPage py-4'>
+      <TabPageBG>
         <header className="tab-page__header">
           <FeatureCarousel />
         </header>
@@ -147,7 +147,6 @@ useEffect(() => {
               ))}
             </div>
         </div>
-      </div>
-    </div>
+      </TabPageBG>
   );
 };

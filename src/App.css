@@ -20,22 +20,6 @@
   --contentWidth:min(82rem, calc(100% - 8rem));
   --contentPadding:4rem;
 }
-.BG_normalPage{
-  background: 
-    linear-gradient(to right, transparent, var(--lightColor) 5%, var(--lightColor) 95%, transparent),
-    linear-gradient(var(--darkColor), var(--darkColor)),
-    url("./material/242.jpg") center/cover repeat,
-    var(--lightColor);
-  background-blend-mode: normal, screen, multiply, normal;
-}
-.normalPageContainer{
-    width: 100%;
-  height: auto;
-  min-height: calc(100vh - var(--navHeight));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 h1,h2,h3,h4,h5{
   font-family: "Shippori Mincho B1";
 }

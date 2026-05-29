@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "../components/cart/cart";
 import { useNavigate } from "react-router-dom";
+import TabPageBG from '../components/tabPageBG/TabPageBG';
 import "../styles/checkout.css";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
@@ -32,9 +33,18 @@ export default function Checkout() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [confirmRemove, setConfirmRemove] = useState(null);
 
-  // ── 訂單明細快照：在清空購物車前先保存，供成功畫面顯示用 ────────────────
-  const [orderSnapshot, setOrderSnapshot] = useState([]);
-  const [snapshotTotal, setSnapshotTotal] = useState(0);
+  // ── 從 sessionStorage 讀取訂單暫存資料 ───────────────────────────────────
+  // 訂單送出成功後寫入，供成功畫面與 Receipt 元件使用。
+  // 使用立即執行函式（IIFE）在初始化時同步讀取，避免額外的 state 或 useEffect。
+  // sessionStorage 會在分頁關閉時自動清除，離開頁面時則由 useEffect cleanup 手動清除。
+  const pendingOrder = (() => {
+    try {
+      const raw = sessionStorage.getItem("pendingOrder");
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  })();
 
   // ── 頁面載入時從 Supabase 抓取所有商品資料 ────────────────────────────────
   useEffect(() => {
@@ -43,6 +53,14 @@ export default function Checkout() {
       if (data) setProducts(data);
     }
     fetchProducts();
+  }, []);
+
+  // ── 離開頁面（元件 unmount）時清除訂單暫存 ───────────────────────────────
+  // 確保暫存資料不會殘留到其他頁面，僅在 Checkout 頁面的生命週期內有效。
+  useEffect(() => {
+    return () => {
+      sessionStorage.removeItem("pendingOrder");
+    };
   }, []);
 
   // ── 將購物車 id 對照到完整商品資料（名稱、價格、圖片） ──────────────────
@@ -117,17 +135,34 @@ export default function Checkout() {
         orderItems
       );
 
-      // 在切換畫面前先將購物車明細與合計快照起來，
-      // 確保成功畫面的訂單明細表格有資料可以顯示
-      setOrderSnapshot([...cartWithDetails]);
-      setSnapshotTotal(computedTotalPrice);
+      // ── 將訂單明細寫入 sessionStorage 作為本地暫存 ──────────────────────
+      // 時間點：Supabase 寫入成功後、購物車清空前，確保資料完整。
+      // 暫存的內容包含成功畫面顯示與 Receipt 截圖所需的全部資料，
+      // 使後續流程完全不依賴 cart state，避免清空時序造成資料遺失。
+      const orderData = {
+        orderNumber: newOrderNumber,
+        items: cartWithDetails.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image,
+        })),
+        total: computedTotalPrice,
+        userEmail: user.email,
+      };
+      sessionStorage.setItem("pendingOrder", JSON.stringify(orderData));
 
       // 保存訂單編號以便後續下載收據時使用
       setOrderNumber(newOrderNumber);
 
-      // 切換到「訂單成功」畫面（購物車尚未清空，Receipt 元件仍可截圖）
+      // ── 購物車於此處直接清空 ─────────────────────────────────────────────
+      // 訂單資料已存入 sessionStorage，不再依賴 cart state，
+      // 可安全地立即清空，不需繞 useEffect 處理時序問題。
+      clearCartAll();
+
+      // 切換到「訂單成功」畫面
       setOrderSuccess(true);
-      // clearCartAll() 改由下方 useEffect 在成功畫面渲染完後執行
     } catch (error) {
       // 寫入失敗時提示使用者，不影響下載邏輯
       console.error("訂單送出失敗：", error);
@@ -136,17 +171,6 @@ export default function Checkout() {
       setIsSubmitting(false);
     }
   };
-
-  // ── 訂單成功畫面渲染完成後，才清空購物車 ────────────────────────────────
-  // 時間點：orderSuccess 變為 true → React 重新渲染成功畫面（含明細快照）→
-  // useEffect 執行 → clearCartAll()
-  // 這樣可確保訂單明細輸出完畢後購物車才被清空，
-  // Receipt 元件在此之前也仍持有原始 cart 資料可供截圖。
-  useEffect(() => {
-    if (orderSuccess) {
-      clearCartAll();
-    }
-  }, [orderSuccess]);
 
   // ── 步驟二：下載收據 PDF ──────────────────────────────────────────────────
   // 此函式由使用者「直接點擊按鈕」觸發，屬於 synchronous user gesture，
@@ -180,15 +204,12 @@ export default function Checkout() {
   // ── 訂單送出成功後顯示的畫面 ─────────────────────────────────────────────
   if (orderSuccess) {
     return (
-      <div
-        id="BG_checkout"
-        className="normalPageContainer BG_normalPage tab-page container-fluid p-0"
-      >
+      <TabPageBG>
         {/* 成功提示區塊 */}
         <div style={{ textAlign: "center", padding: "2rem" }}>
           <h3>訂單已送出</h3>
           <p>訂單編號：{orderNumber}</p>
-          {/* 訂單內容明細：使用快照資料，不受後續購物車清空影響 */}
+          {/* 訂單內容明細：從 sessionStorage 暫存讀取，不受購物車清空影響 */}
           <div style={{ margin: "1rem 0", textAlign: "center", display: "inline-block", minWidth: "260px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
@@ -199,7 +220,7 @@ export default function Checkout() {
                 </tr>
               </thead>
               <tbody>
-                {orderSnapshot.map((item) => (
+                {(pendingOrder?.items ?? []).map((item) => (
                   <tr key={item.id}>
                     <td style={{ padding: "4px 8px" }}>{item.name}</td>
                     <td style={{ padding: "4px 8px", textAlign: "center" }}>{item.quantity}</td>
@@ -210,7 +231,7 @@ export default function Checkout() {
               <tfoot>
                 <tr>
                   <td colSpan={2} style={{ borderTop: "1px solid #ccc", padding: "6px 8px", fontWeight: "bold" }}>合計</td>
-                  <td style={{ borderTop: "1px solid #ccc", padding: "6px 8px", textAlign: "right", fontWeight: "bold" }}>{snapshotTotal} 元</td>
+                  <td style={{ borderTop: "1px solid #ccc", padding: "6px 8px", textAlign: "right", fontWeight: "bold" }}>{pendingOrder?.total ?? 0} 元</td>
                 </tr>
               </tfoot>
             </table>
@@ -232,21 +253,19 @@ export default function Checkout() {
           </div>
         </div>
 
-        {/* Receipt 元件仍需渲染在 DOM 中，html2canvas 才能截圖 */}
+        {/* Receipt 元件：從 sessionStorage 暫存取得訂單資料，不依賴 cart state */}
         <Receipt
-          cart={cartWithDetails}
-          totalPrice={computedTotalPrice}
+          cart={pendingOrder?.items ?? []}
+          totalPrice={pendingOrder?.total ?? 0}
           user={user}
         />
-      </div>
+      </TabPageBG>
     );
   }
 
   // ── 主要購物車畫面 ────────────────────────────────────────────────────────
   return (
-    <div
-      id="BG_checkout"
-      className="normalPageContainer BG_normalPage tab-page container-fluid p-0"
+    <TabPageBG
     >
       {/* 頁面標題 */}
       <div style={{ textAlign: "center" }}>
@@ -367,6 +386,6 @@ export default function Checkout() {
         totalPrice={computedTotalPrice}
         user={user}
       />
-    </div>
+    </TabPageBG>
   );
 }

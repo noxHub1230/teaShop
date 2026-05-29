@@ -6,7 +6,7 @@ import { supabase } from "../supabaseClient";
 import { gsap, ScrollTrigger } from "./gsapSetup";
 import { navItems } from "../data/data_basic";
 import {useCart} from "../components/cart/cart";
-
+import TabPageBG from '../components/tabPageBG/TabPageBG';
 
 export default function ProductDetail() {
   const{addToCart}=useCart();
@@ -88,8 +88,7 @@ export default function ProductDetail() {
   );
   }
   return (
-    <div className="tab-page container-fluid p-0">
-      <div id="BG_productDetail" className='normalPageContainer BG_normalPage py-4'>
+      <TabPageBG>
         <div id="content_productDetail">
           <div aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -167,7 +166,6 @@ export default function ProductDetail() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </TabPageBG>
   );
 };

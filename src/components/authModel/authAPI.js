@@ -26,7 +26,7 @@ export async function signUpWithEmail(email, password, displayName) {
       email,
       password,
       data: {
-        display_name: displayName,
+        display_name: displayName.trim() === ""?email.slice(0,6):displayName.trim(),
       },
     }),
   });
