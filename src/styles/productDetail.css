@@ -237,13 +237,12 @@ text-shadow: 0 0 3px var(--darkColor);
   .carouselArrow_pD.nxt {
     transform: translateX(-1rem);
   }
-
   .carouselArrow_pD.pre:hover {
-    transform: translateX(6rem);
+    transform: translateX(1rem);
   }
 
   .carouselArrow_pD.nxt:hover {
-    transform: translateX(-6rem);
+    transform: translateX(-1rem);
   }
 
   .carouselArrow_pD i {

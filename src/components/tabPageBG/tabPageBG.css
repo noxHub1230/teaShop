@@ -13,3 +13,8 @@
   background-blend-mode: normal, screen, multiply, normal;
   padding: 1.5rem 5.5rem;
 }
+@media screen and (max-width:850px){
+  .tabPageBG__container {
+  padding: 1.5rem 2rem;
+}
+}

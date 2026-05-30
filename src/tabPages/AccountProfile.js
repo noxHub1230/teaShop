@@ -4,6 +4,8 @@ import "../styles/accountProfile.css";
 
 export default function AccountProfile(){
     return(
-0
+    <TabPageBG>
+
+    </TabPageBG>
     );
 };
