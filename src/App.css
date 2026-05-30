@@ -79,6 +79,9 @@ ul {
   font-style: normal;
   font-size: var(--fontLarge) !important;
 }
+.nav-item{
+  position:relative;
+}
 .nav-item::before {
   content: "";
   background: linear-gradient(
@@ -88,9 +91,10 @@ ul {
   );
   position: absolute;
   z-index: 0;
-  width: 7.8rem;
+  left: -0.25em;    /* 文字左側各延伸 1rem */
+  right: -0.25em;   /* 文字右側各延伸 1rem */
   height: 0;
-  top: 0;
+  top: -1.25rem;
 }
 .nav-item:hover::before {
   height: 5.5rem;
