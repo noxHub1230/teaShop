@@ -50,9 +50,13 @@
 #pickedNews_home {
   width:100%;
   background: 
-  linear-gradient(to right,transparent,var(--lightColor)10%,var(--lightColor)90%,transparent),
+  linear-gradient(to right,
+  transparent,
+  var(--lightColor)10%,
+  var(--lightColor)90%,
+  transparent),
   linear-gradient(var(--darkColor),var(--darkColor)),
-  url("../material/242.jpg") center/cover repeat,
+  url("../material/242b.png") center/cover repeat,
   var(--lightColor);
   background-blend-mode: normal,screen,multiply,normal;
   display:grid;
